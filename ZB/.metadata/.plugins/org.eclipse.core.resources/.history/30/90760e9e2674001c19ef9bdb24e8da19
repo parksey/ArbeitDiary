@@ -1,0 +1,11 @@
+package com.zerobase.fastlms.member.service;
+
+import org.springframework.security.core.userdetails.UserDetailsService;
+
+import com.zerobase.fastlms.member.model.MemberInput;
+
+public interface MemberService extends UserDetailsService{
+	boolean register(MemberInput parameter);
+	
+	boolean emailAuth(String uuid);
+}

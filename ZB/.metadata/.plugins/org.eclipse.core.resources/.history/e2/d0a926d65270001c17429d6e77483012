@@ -1,0 +1,4 @@
+spring:
+	datasource:
+		url: 
+spring.datasource.url=jdbc:mariadb://127.0.0.1:43306/minicampus

@@ -1,0 +1,28 @@
+package com.zerobase.fastlms.member.service;
+
+import org.springframework.stereotype.Service;
+
+import com.zerobase.fastlms.member.model.MemberInput;
+import com.zerobase.fastlms.member.repository.MemberRepository;
+
+@Service
+public class MemberServiceImpl implements MemberService{
+	private final MemberRepository memberRepository;
+	
+	public MemberServiceImpl(MemberRepository memberRepository) {
+		this.memberRepository = memberRepository;
+	}
+	
+	@Override
+	public boolean register(MemberInput parameter) {
+		Member member = new Member();
+		member.setUserId(parameter.getUserId());
+		member.setUserName(parameter.getUserName());
+		member.setPassword(parameter.getUserPassword());
+		member.setPhone(parameter.getUserPhone());
+
+		memberRepository.save(member);
+		return false;
+	}
+
+}

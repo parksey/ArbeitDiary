@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang = "ko">
+	<head>
+		<meta charset = "utf-8">
+		<title>비밀번호 변경 결과</title>
+	</head>
+	<body>
+		<h1>비밀번호 변경 결과 페이지</h1>
+		<div th:replace="/fragment/layout.html :: fragment-body-menu"></div>
+		
+		<form method="post">
+			<div>
+				<input type="text" name="userId" placeholder="이메일입력" required/>
+			</div>
+			<div>
+				<input type="text" name="userName" placeholder="이름 입력" required/>
+			</div>
+			<div>
+				<button type="submit">비밀번호 변경</button>
+			</div>
+		</form>
+		<div th:text="${errorMessage}"></div>
+	</body>
+</html>

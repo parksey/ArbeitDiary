@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang = "ko">
+	<head>
+		<meta charset = "utf-8">
+		<title>비밀번호 변경</title>
+	</head>
+	<body>
+		<h1>비밀번호 변경 페이지</h1>
+		<div th:replace="/fragment/layout.html :: fragment-body-menu"></div>
+		<form method="post">
+			<button>변경하러 가기</button>
+		</form>
+	</body>
+</html>

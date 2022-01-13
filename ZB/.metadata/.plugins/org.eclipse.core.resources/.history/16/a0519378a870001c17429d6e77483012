@@ -1,0 +1,25 @@
+package com.zerobase.fastlms;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.zerobase.fastlms.component.MailComponent;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Controller
+public class MainController {
+	private final MailComponent mailComponents;
+	@GetMapping("/")
+	public String index() {
+		/*
+		String mail = "parkseyeon99@naver.com";
+		String subject = "안녕";
+		String text = "안녕하세요 반가워요";
+		System.out.println("index");
+		mailComponents.sendMail(mail, subject, text);
+		*/
+		return "index";
+	}
+}

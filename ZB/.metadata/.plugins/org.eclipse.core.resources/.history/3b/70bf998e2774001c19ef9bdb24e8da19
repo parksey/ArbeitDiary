@@ -1,0 +1,6 @@
+package com.zerobase.fastlms.member.model;
+
+public class ResetPasswordInput {
+	private String userId;
+	private String userName;
+}

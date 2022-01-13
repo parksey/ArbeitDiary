@@ -1,0 +1,4 @@
+spring.datasource.url=jdbc:mariadb://127.0.0.1:43306/minicampus
+spring.datasource.driver-class-name=org.mariadb.jdbc.Driver
+spring.datasource.username=minicampus_user
+spring.datasource.password=a1234

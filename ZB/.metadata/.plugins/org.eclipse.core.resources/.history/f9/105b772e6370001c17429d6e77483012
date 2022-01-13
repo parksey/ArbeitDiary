@@ -1,0 +1,16 @@
+package com.zerobase.fastlms.member.service;
+
+import org.springframework.stereotype.Service;
+
+import com.zerobase.fastlms.member.model.MemberInput;
+
+@Service
+public class MemberServiceImpl implements MemberService{
+
+	@Override
+	public boolean register(MemberInput parameter) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}
