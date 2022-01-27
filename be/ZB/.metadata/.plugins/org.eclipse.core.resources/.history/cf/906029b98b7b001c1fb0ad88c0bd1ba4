@@ -1,0 +1,10 @@
+package com.zerobase.fastlms.course.service;
+
+import org.springframework.stereotype.Service;
+
+import com.zerobase.fastlms.course.model.CourseInput;
+
+@Service
+public interface CourseService {
+	boolean add(CourseInput courseInput);
+}

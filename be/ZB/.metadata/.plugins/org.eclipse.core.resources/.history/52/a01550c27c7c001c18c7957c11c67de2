@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th = "http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>강의 정보</title>
+		<style>
+			span.price {
+				text-decoration: line-through;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>강좌 상세 정보</h1>
+		<div th:replace="fragment/layout.html :: fragment-body-menu"></div>
+		<div th:text="courseDetail">
+		
+		</div>
+	</body>
+</html>

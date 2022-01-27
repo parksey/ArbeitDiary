@@ -1,0 +1,5 @@
+package com.zerobase.fastlms.admin.controller;
+
+public class BaseController {
+
+}

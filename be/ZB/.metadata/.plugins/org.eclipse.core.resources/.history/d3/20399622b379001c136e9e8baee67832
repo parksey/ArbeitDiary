@@ -1,0 +1,5 @@
+package com.zerobase.fastlms.member.controller;
+
+public class ModelInput {
+
+}

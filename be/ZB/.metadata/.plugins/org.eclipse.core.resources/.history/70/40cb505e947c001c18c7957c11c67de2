@@ -1,0 +1,10 @@
+package com.zerobase.fastlms.common.model;
+
+public class ResponseResult {
+	ResponseResultHeader header;
+	Object body;
+	
+	public ResponseResult(boolean b, String message) {
+		// TODO Auto-generated constructor stub
+	}
+}

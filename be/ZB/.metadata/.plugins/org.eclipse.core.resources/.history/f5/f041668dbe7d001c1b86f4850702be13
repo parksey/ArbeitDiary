@@ -1,0 +1,11 @@
+package com.zerobase.fastlms.course.mapper;
+
+import java.util.List;
+
+import com.zerobase.fastlms.course.dto.TakeCourseDto;
+import com.zerobase.fastlms.course.model.TakeCourseParam;
+
+public interface TakeCourseMapper {
+	List<TakeCourseDto> selectList(TakeCourseParam courseParam);
+	long selectListCount(TakeCourseParam courseParam);
+}

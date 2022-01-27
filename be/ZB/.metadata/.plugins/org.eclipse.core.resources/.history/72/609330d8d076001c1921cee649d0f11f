@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang = "ko">
+	<head>
+		<meta charset = "utf-8">
+		<title>관리자 페이지</title>
+		<style>
+			.list table{
+				width: 100%;
+				border-collapse: collapse;
+			}
+			.list table th, .list table td{
+				border: solid 1px #000;
+			}
+			.search-form {
+				text-align: right;
+				padding : 5px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>관리자 페이지!!!!</h1>
+		<div th:replace="/fragment/layout.html :: fragment-body-menu"></div>
+		<div class="list">
+			<div th:text="${param.searchType}"></div>
+			<div th:text="${param.searchValue}"></div>
+			<div class="search-form">
+				<form method="get">
+					<select name="searchType">
+						<option value="all">전체</option>
+						<option th:selected="${#strings.equals(param.searchType, 'userId')}" value="userId">아이디</option>
+						<option th:selected="${#strings.equals(param.searchType, 'userName')}" value="userName">이름</option>
+						<option th:selected="${#strings.equals(param.searchType, 'phone')}" value="phone">연락처</option>
+					</select>
+					<input th:value="${param.searchValue}" type="text" name="searchValue" placeholder="검색어 입력"/>
+					<button type="submit">검색</button>
+				</form>
+			</div>
+		
+			<table>
+				<thead>
+					<tr>
+						<th>NO</th>
+						<th>이메일</th>
+						<th>이름</th>
+						<th>연락처</th>
+						<th>가입일</th>
+						<th>이메일 인증 여부</th>
+						<th>관리자 여부</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="x : ${list}">
+						<td>1</td>
+						<td th:text="${x.userId}"></td>
+						<td th:text="${x.userName}"></td>
+						<td th:text="${x.phone}"></td>
+						<td th:text="${x.regDt}"></td>
+						<td>
+							<p th:if="${x.emailAuthYn eq true}">Y</p>
+							<p th:if="${x.emailAuthYn eq fakse}">N</p>
+						</td>
+						<td>
+							<p th:if="${x.adminYn eq true}">Y</p>
+							<p th:if="${x.adminYn eq fakse}">N</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,8 @@
+package com.zerobase.fastlms.course;
+
+import com.zerobase.fastlms.course.model.CourseInput;
+
+@Service
+public interface CourseService {
+	boolean add(CourseInput courseInput);
+}

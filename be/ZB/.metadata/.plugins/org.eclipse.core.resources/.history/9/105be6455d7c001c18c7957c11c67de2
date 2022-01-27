@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th = "http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>강의 정보</title>
+	</head>
+	<body>
+		<div th:fragment="fragment-body-menu">
+			
+		</div>
+	</body>
+</html>

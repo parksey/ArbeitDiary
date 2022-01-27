@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>강좌 - 등록 페이지</title>
+		<style>
+			
+			.list table th, .list table td{
+				border: solid 1px #000;
+				text-align : center;
+				font-weight : bold;
+				
+			}
+			.list table th {
+				width : 30%;
+			}
+			p.nothing {
+				text-align : center;
+				padding : 100px;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>강좌 등록 페이지!!!!</h1>
+		<div th:replace="fragment/layout.html :: fragment-body-menu"></div>
+		
+		<div class="detail">
+			<table>
+				<tbody>
+					<tr>
+						<th>강좌명</th>
+						<td></td>
+					</tr>	
+				</<tbody>>
+			</table>
+		</div>
+	</body>
+</html>

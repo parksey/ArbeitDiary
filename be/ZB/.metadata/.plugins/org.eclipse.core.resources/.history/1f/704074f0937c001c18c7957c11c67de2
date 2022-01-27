@@ -1,0 +1,5 @@
+package com.zerobase.fastlms.common.model;
+
+public class ResponseResultHeader {
+
+}

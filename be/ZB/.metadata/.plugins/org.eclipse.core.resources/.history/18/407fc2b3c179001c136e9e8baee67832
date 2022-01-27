@@ -1,0 +1,53 @@
+package com.zerobase.fastlms.member.controller;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Optional;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.zerobase.fastlms.member.entity.Member;
+import com.zerobase.fastlms.member.model.MemberInput;
+import com.zerobase.fastlms.member.model.ResetPasswordInput;
+import com.zerobase.fastlms.member.repository.MemberRepository;
+import com.zerobase.fastlms.member.service.MemberService;
+
+import lombok.Builder;
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@RestController
+public class ApiMemberController {
+	MemberRepository memberRepository;	
+	
+	@ResponseBody
+	@GetMapping("/api/users")
+	public String ip () {
+		// 요청을 보낸 클라이언트의 IP주소를 반환합니다.
+		String is = "parkseyeon99@naver.com";
+		Optional<Member> memberOptional = Optional.ofNullable(memberRepository.findById(is).get());
+        if(memberOptional.isEmpty()) {
+        	System.out.println("asd");
+        }
+		System.out.println(memberOptional);
+		return "Hello";
+	}
+	
+	@GetMapping("/api/hello")
+	public String hello() {
+		return "안녕";
+	}
+	
+}

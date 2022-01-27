@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zerobase.fastlms.admin.mapper.CategoryMapper">
+  <select id="select"
+  			parameterType="com.zerobase.fastlms.admin.dto.CategoryDto" 
+  			resultType="com.zerobase.fastlms.admin.dto.CategoryDto">
+    	select c.*
+		, (SELECT COUNT(*) FROM course WHERE category_id = c.id) AS course_count
+		from category c
+		WHERE using_yn = 1
+		ORDER BY sort_value desc
+
+  </select>
+</mapper>

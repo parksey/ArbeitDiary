@@ -1,0 +1,46 @@
+package com.zerobase.fastlms.admin.dto;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.util.CollectionUtils;
+
+import com.zerobase.fastlms.admin.entity.Category;
+
+import lombok.Builder;
+import lombok.Data;
+
+@Builder
+@Data
+public class CategoryDto {
+	private long id;
+	
+	String categoryName;
+	int sortValue;
+	boolean usingYn;
+	
+	public static List<CategoryDto> of(List<Category> categories){
+		if(categories != null) {
+			List<CategoryDto> categoryDto = new ArrayList<>();
+			System.out.println("-----------------------------------");
+			for(Category category : categories) {
+				System.out.println(":::::"+category);
+				categoryDto.add(of(category));
+			}
+			System.out.println("-----------------------------------");
+			return categoryDto;
+		}
+		return null;
+	}
+	
+	public static CategoryDto of(Category category) {
+		return CategoryDto.builder()
+				.id(category.getId())
+				.categoryName(category.getCategoryName())
+				.sortValue(category.getSortValue())
+				.usingYn(true)
+				.build();
+	}
+			
+	
+}

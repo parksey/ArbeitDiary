@@ -1,0 +1,33 @@
+package com.zerobase.fastlms.course.dto;
+
+import java.time.LocalDateTime;
+
+import com.zerobase.fastlms.course.entity.Course;
+
+import lombok.Data;
+
+@Data
+public class CourseDto {
+	long totalCount;
+	long courseNum;
+	
+	Long id;
+	
+	String imagePath;
+	String keyword;
+	String subject;
+	
+	String summary;
+	
+	String contents;
+	long price;
+	long salePrice;
+	LocalDateTime saleEndDt;
+	
+	LocalDateTime regDt;
+	LocalDateTime udtDt;
+	
+	public static CourseDto of(Course course) {
+		return null;
+	}
+}

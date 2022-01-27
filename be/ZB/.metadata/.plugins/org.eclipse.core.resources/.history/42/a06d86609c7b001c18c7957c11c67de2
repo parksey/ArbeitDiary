@@ -1,0 +1,9 @@
+package com.zerobase.fastlms.course.model;
+
+import com.zerobase.fastlms.admin.model.CommonParam;
+
+public class CourseParam extends CommonParam{	
+	String userId;
+	
+	
+}

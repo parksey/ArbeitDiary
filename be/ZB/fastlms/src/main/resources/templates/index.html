@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>Main</title>
+	</head>
+	<body>
+		<h1>인덱스 페이지!!!!</h1>
+		<div th:replace="fragment/layout.html :: fragment-body-menu"></div>
+		<form method="post" action="/api/users">
+			<button type="submit">버튼</button>
+		</form>
+		SELECT tc.*
+	, c.subject
+	, m.user_name
+	, m.phone
+FROM take_course tc
+	JOIN course c ON tc.course_id = c.id
+	JOIN member m ON tc.user_id = m.user_idmembermembercoursemember
+	</body>
+</html>

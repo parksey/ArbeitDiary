@@ -1,0 +1,12 @@
+1641614065533	Rename package 'com.example.demo'
+1641614563821	Rename type 'IndexController'
+1641622991153	Rename type 'MainPage'
+1641623579557	Rename resource 'register'
+1641629945273	Delete element
+1641630364091	Rename resource 'register-complete'
+1641637625035	Rename resource 'application.properties'
+1641664197758	Rename resource 'email-auth'
+1641667436838	Encapsulate field 'userId'
+1641667454817	Encapsulate field 'userName'
+1641667461464	Encapsulate field 'userPassword'
+1641667469238	Encapsulate field 'userPhone'
