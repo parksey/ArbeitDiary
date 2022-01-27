@@ -1,0 +1,9 @@
+.schedule {
+  margin: 10% 0 5% 5%;
+  width: 50%;
+  height: 80%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}

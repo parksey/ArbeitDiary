@@ -1,5 +1,0 @@
-package com.zerobase.fastlms.member.exception;
-
-public class MemberNotEmailAllthException extends Exception {
-
-}

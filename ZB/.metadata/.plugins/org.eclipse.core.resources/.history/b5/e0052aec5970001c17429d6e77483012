@@ -1,9 +1,0 @@
-package com.zerobase.fastlms.member;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.zerobase.fastlms.member.entit.Member;
-
-public interface MemberRepository extends JpaRepository<Member, String>{
-
-}

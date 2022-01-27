@@ -1,0 +1,80 @@
+.UserList {
+  width: 20%;
+  height: 100%;
+  margin-top: 5%;
+  margin-left: 5%;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  position: sticky;
+  top: 20%;
+}
+
+.UserList:hover {
+  border: 1px solid var(--main-color);
+  border-radius: 15px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
+
+.UserList .UserList-title {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 2rem;
+  padding-bottom: 2rem;
+  color: #343a40;
+  font-size: 25px;
+  font-weight: 700;
+  border-bottom: 1px solid #343a40;
+}
+
+.UserList .User {
+  display: flex;
+  font-size: 20px;
+  color: var(--main-color);
+  margin: 30px 30px;
+  cursor: pointer;
+}
+
+.UserList .User .checkBox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #d2d2d2;
+  border-radius: 99px;
+}
+
+.UserList .User .checkBoxDone {
+  border: 1px solid var(--main-color);
+}
+
+.UserList .User .userText {
+  color: #d2d2d2;
+  margin-left: 10px;
+}
+
+.UserList .User .userTextDone {
+  color: #343a40;
+}
+
+.UserList .plusBox {
+  color: var(--main-color);
+  width: 40px;
+  height: 40px;
+  background: var(--main-color);
+  color: #fff0f0;
+  border-radius: 99px;
+  font-size: 40px;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  cursor: pointer;
+}
+
+.UserList .plusBox:hover {
+  background: #fff0f0;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  transition: 0.5s;
+}
