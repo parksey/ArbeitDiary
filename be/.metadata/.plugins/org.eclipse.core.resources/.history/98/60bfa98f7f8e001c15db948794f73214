@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>Login</title>
+	</head>
+	<body>
+		<h1>로그인 페이지</h1>
+		<div th:replace="fragment/layout.html :: fragment-body-menu"></div>
+		
+		<form method="post">
+			<div>
+				<input type="text" name="userId" placeholder="이메일입력" required/>
+			</div>
+			<div>
+				<input type="password" name="userPassword" placeholder="비밀번호 입력" required/>
+			</div>
+			<div>
+				<button type="submit">로그인</button>
+			</div>
+			<div>
+				<a href="/member/find/email">아이디 찾기</a>
+				<a href="/member/find/password">비밀번호 찾기</a>
+			</div>
+		</form>
+		<div th:text="${errorMessage}"></div>
+		<div th:if="${result eq true}">
+			<p>이메일을 전송하였습니다. 인증해주세요</p>
+		</div>
+	</body>
+</html>

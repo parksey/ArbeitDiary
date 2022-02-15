@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th = "http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>강의 정보</title>
+		<style>
+			span.price {
+				text-decoration: line-through;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>메인 페이지</h1>
+		<div th:replace="fragment/layout.html :: fragment-body-menu"></div>
+		<div>
+			<a href="/course">
+				전체 (<span th:text="${countAll}">0</span>)
+			</a>
+			<th:block th:each="x : ${category}">
+				|
+				<a th:href="'/course?categoryId='+${x.id}">
+					<span th:text="${x.categoryName}"></span>(<span th:text="${x.courseCount}"></span>)
+				</a>
+			</th:block>
+		</div>
+		<hr/>
+		<ul>
+			<li th:each="x : ${list}">
+				<div>
+					<a th:href="'/course/'+${x.id}">
+						<h3 th:text="${x.subject}">강좌명</h3>
+					</a>
+					<div>
+						<p th:text="${x.summary}">요약</p>
+						<p>
+							판매가 : <span class="price" th:text="${x.price}">판매가</span>
+							할인가 : <span th:text="${x.salePrice}">할인가</span>
+						</p>
+					</div>
+				</div>
+			</li>
+		</ul>
+	</body>
+</html>

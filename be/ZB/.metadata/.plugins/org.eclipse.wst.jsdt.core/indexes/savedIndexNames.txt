@@ -1,9 +1,0 @@
-INDEX VERSION 1.4+C:\Users\sypark\Desktop\semi-project\ArbeitDiary\be\ZB - บนป็บป\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-3392476450.index
-1322792508.index
-4209254705.index
-384018845.index
-3404962064.index
-3102336863.index
-77459036.index
-1955122199.index

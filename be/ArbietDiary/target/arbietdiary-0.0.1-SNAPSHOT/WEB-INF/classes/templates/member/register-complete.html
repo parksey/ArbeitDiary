@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>회원 가입 완료</title>
+	</head>
+	<body>
+		<h1>회원 가입 결과</h1>
+		<div th:replace="fragment/layout.html :: fragment-body-menu"></div>
+		<div th:if="${result eq true}">
+			<p> 회원가입 완료</p>
+			<p>이메일로 가입을 완료해주세요</p> 
+		</div>
+		<div th:if="${result eq false}">
+			<p>이미 존재하는 이메일</p>
+			<p>회원 가입 실패하였습니다</p>
+			<p th:text="${result}">
+		</div>
+	</body>
+</html>

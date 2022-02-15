@@ -1,0 +1,11 @@
+package com.arbietDiary.arbietdiary.member.service;
+
+import com.arbietDiary.arbietdiary.member.model.MemberInput;
+
+public interface MemberService {
+
+	boolean register(MemberInput memberInput);
+
+	boolean emailAuth(String uuid);
+
+}

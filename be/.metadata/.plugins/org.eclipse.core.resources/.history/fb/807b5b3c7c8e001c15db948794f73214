@@ -1,0 +1,33 @@
+package com.arbietDiary.arbietdiary.member.service.impl;
+
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.arbietDiary.arbietdiary.member.entity.Member;
+import com.arbietDiary.arbietdiary.member.model.MemberInput;
+import com.arbietDiary.arbietdiary.member.repository.MemberRepository;
+import com.arbietDiary.arbietdiary.member.service.MemberService;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class MemberServiceImpl implements MemberService{
+	private final MemberRepository memberRepository;
+	
+	@Override
+	public boolean register(MemberInput memberInput) {
+		Optional<Member> optionalMember = memberRepository.findById(memberInput.getUserId());
+		if(optionalMember.isEmpty()) {
+			System.out.println("[회원 등록] : 실패");
+			return false;
+		}
+		
+		Member member = optionalMember.get();
+		String encodePasswor = bcrpy;
+		
+		return true;
+	}
+}

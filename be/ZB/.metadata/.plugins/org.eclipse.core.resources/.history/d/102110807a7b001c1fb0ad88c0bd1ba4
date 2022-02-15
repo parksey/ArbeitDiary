@@ -1,6 +1,0 @@
-package com.zerobase.fastlms.course;
-
-@Entity
-public class Course {
-
-}

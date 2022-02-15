@@ -1,0 +1,31 @@
+spring:
+  datasource:
+    url: jdbc:mariadb://127.0.0.1:43306/arbietdiary
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: seyeonpark
+    password: ruddls14
+    
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate.format.sql: true
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: saeyun302@gmail.com
+    password: hkkvwiuvsccheiuz
+    properties:
+      mail:
+        smtp:
+          starttls:
+            enable: true
+        auth: true
+ 
+  level:
+    org:
+      springframework:
+        web: debug

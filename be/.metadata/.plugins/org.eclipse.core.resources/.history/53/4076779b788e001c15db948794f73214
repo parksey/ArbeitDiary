@@ -1,0 +1,20 @@
+package com.arbietDiary.arbietdiary.member.controller;
+
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+
+@Controller
+public class MemberController {
+	@GetMapping("/member/register")
+	public String register(){
+		System.out.println("[회원 가입] : 화면");
+		return "member/register";
+	}
+	
+	@PostMapping("/member/register")
+	public String submitRegist() {
+		System.out.println("[회원 가입] : 요청");
+		return "member/register-complete";
+	}
+}

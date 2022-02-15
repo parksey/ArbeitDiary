@@ -1,5 +1,0 @@
-package com.zerobase.fastlms.course.repository;
-
-public class TakeCourseRepository {
-
-}

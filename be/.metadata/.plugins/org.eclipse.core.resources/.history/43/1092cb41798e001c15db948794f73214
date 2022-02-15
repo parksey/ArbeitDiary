@@ -1,0 +1,9 @@
+package com.arbietDiary.arbietdiary.member.model;
+
+public class MemberInput {
+	String userId;
+	String userName;
+	String userPassword;
+	String userPhone;
+	String newPassword;
+}

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>커멘트 생성</title>
+	</head>
+	<body>
+		<h1>커멘트 폼</h1>
+		<div th:replace="fragment/layout.html :: fragment-body-menu"></div>
+		
+		<form method="post">
+			<div>
+				<input type="text" name="text" placeholder="커멘트" required/> 
+				<input type="text" name="calendarId" placeholder="캘린더 ID" required/>
+				<input type="text" name="dateId" placeholder="날짜ID" required/> 
+			</div>
+			<div>
+				<button type="submit">생성</button>
+			</div>
+		</form>
+	</body>
+</html>

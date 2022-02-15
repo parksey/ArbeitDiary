@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>Info</title>
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+		<script>
+			$(document).ready(function(){
+				$('#submitForm').on('submit', function(){
+					var $thisForm = $(this);
+				
+					
+					var newPassword = $thisForm.find("input[name=newPassword]").val();
+					var newRePassword = $thisForm.find("input[name=newRePassword]").val();
+					if(newPassword !== newRePassword){
+						alert("신규 비밀번호와 신규 비밀번호 확인 값과 일치하지 않습니다.");
+						return false;
+					}
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h1>회원 정보</h1>
+		<div th:replace="fragment/layout.html :: fragment-body-menu"></div>
+		<div>
+			<a href="/member/takecourse">수강 정보</a>
+			<a href="/member/password">비밀번호 변경</a>
+		</div>
+		<div>
+			<form id="submitForm" method="post">
+				<div>
+					<input type="password" name="userPassword" placeholder="현재비밀번호 입력" required/> 
+				</div>
+				<div>
+					<input type="password" name="newPassword" placeholder="새비밀번호 입력" required/>
+				</div>
+				<div>
+					<input type="password" name="newRePassword" placeholder="신규 비밀번호 확인" required/>
+				</div>
+				<div>
+					<button type="submit">비밀번호 입력</button>
+				</div>
+			</form>
+			
+		</div>
+	</body>
+</html>

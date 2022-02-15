@@ -1,6 +1,0 @@
-package com.zerobase.fastlms.course.dto;
-
-public class CourseDto {
-	long totalCount;
-	long courseNum
-}

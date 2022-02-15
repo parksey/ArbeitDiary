@@ -1,0 +1,53 @@
+package com.arbietDiary.arbietdiary.member.service.impl;
+
+import java.lang.reflect.Parameter;
+import java.time.LocalDateTime;
+import java.util.Optional;
+import java.util.UUID;
+
+import org.springframework.stereotype.Service;
+
+import com.arbietDiary.arbietdiary.member.entity.Member;
+import com.arbietDiary.arbietdiary.member.model.MemberInput;
+import com.arbietDiary.arbietdiary.member.repository.MemberRepository;
+import com.arbietDiary.arbietdiary.member.service.MemberService;
+import org.springframework.security.crypto.bcrypt.BCrypt;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class MemberServiceImpl implements MemberService{
+	private final MemberRepository memberRepository;
+	
+	@Override
+	public boolean register(MemberInput memberInput) {
+		Optional<Member> optionalMember = memberRepository.findById(memberInput.getUserId());
+		if(optionalMember.isPresent()) {
+			System.out.println("[회원 등록] : 이미 존재");
+			return false;
+		}
+		
+		String encodePasswor = BCrypt.hashpw(memberInput.getUserPassword(), BCrypt.gensalt());
+
+		String uuid = UUID.randomUUID().toString();
+		Member member = Member.builder()
+				.userId(memberInput.getUserId())
+				.userName(memberInput.getUserName())
+				.password(encodePasswor)
+				.phone(memberInput.getUserPhone())
+				.regDt(LocalDateTime.now())
+				.emailAuthYn(false)
+				.emailAuthKey(uuid)
+				.userState(Member.MEMBER_STATUS_YET)
+				.roles(Member.MEMBER_STATUS_INVALID)
+				.refreshToken(Member.MEMBER_STATUS_INVALID)
+				.build();
+		
+		memberRepository.save(member);
+		System.out.println("[회원 등록] : 성공");
+				
+		
+		return true;
+	}
+}

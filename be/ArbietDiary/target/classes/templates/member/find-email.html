@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>이메일 찾기</title>
+	</head>
+	<body>
+		<h1>이메일 찾기 페이지</h1>
+		<div th:replace="fragment/layout.html :: fragment-body-menu"></div>
+		
+		<form method="post">
+			<div>
+				<input type="text" name="userId" placeholder="이름입력" required/>
+			</div>
+			<div>
+				<input type="text" name="userName" placeholder="핸드폰 번호" required/>
+			</div>
+			<div>
+				<button type="submit">찾기</button>
+			</div>
+			<div>
+				<a href="/member/find/password">비밀번호 찾기</a>
+			</div>
+		</form>
+		<div th:text="${errorMessage}"></div>
+	</body>
+</html>

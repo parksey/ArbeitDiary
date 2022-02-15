@@ -1,9 +1,0 @@
-package com.zerobase.fastlms.course;
-
-import javax.persistence.Entity;
-
-@Data
-@Entity
-public class Course {
-
-}

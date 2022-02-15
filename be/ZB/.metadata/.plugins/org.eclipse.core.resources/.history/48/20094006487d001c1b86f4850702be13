@@ -1,5 +1,0 @@
-package com.zerobase.fastlms.filter;
-
-public class CORSFilter {
-
-}

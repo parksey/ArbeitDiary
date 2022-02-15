@@ -1,0 +1,14 @@
+package com.arbietDiary.arbietdiary.member.model;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class MemberInput {
+	String userId;
+	String userName;
+	String userPassword;
+	String userPhone;
+	String newPassword;
+}

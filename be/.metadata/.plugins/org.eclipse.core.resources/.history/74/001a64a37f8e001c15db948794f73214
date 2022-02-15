@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>새 프로젝트 만들기</title>
+	</head>
+	<body>
+		<h1>Join project</h1>
+		<div th:replace="fragment/layout.html :: fragment-body-menu"></div>
+		
+		<form method="post">
+			<div>
+				<input type="text" name="projectId" placeholder="참여 코드명" required/> 
+			</div>
+			<div>
+				<button type="submit">참여</button>
+			</div>
+		</form>
+	</body>
+</html>

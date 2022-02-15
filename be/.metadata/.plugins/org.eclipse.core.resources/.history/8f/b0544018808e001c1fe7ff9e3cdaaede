@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>비밀번호 찾기 결과</title>
+	</head>
+	<body>
+		<h1>비밀번호 초기화</h1>
+		<div th:replace="fragment/layout.html :: fragment-body-menu"></div>
+		<div th:if="${result eq true}">이메일을 확인해 주세요.</div>
+		<div th:if="${result eq false}">회원 정보 오류입니다.</div>
+	</body>
+</html>
