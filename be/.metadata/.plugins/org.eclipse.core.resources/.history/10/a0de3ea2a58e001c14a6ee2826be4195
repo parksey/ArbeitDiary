@@ -1,0 +1,7 @@
+package com.arbietDiary.arbietdiary.error;
+
+public class MemberNotEmailAllthException {
+	public MemberNotEmailAllthException(String error) {
+		super(error);
+	}
+}

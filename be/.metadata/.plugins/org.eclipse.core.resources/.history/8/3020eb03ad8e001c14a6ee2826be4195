@@ -1,0 +1,7 @@
+package com.arbietDiary.arbietdiary.secret;
+
+
+public interface SecretData {
+	public static final String localUrl = "http://localhost:3000"; 
+	
+}

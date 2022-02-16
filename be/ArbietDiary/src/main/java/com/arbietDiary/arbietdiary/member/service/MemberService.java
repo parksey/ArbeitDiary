@@ -1,6 +1,8 @@
 package com.arbietDiary.arbietdiary.member.service;
 
+import com.arbietDiary.arbietdiary.member.model.CustomUserDetails;
 import com.arbietDiary.arbietdiary.member.model.MemberInput;
+import com.arbietDiary.arbietdiary.member.model.MemberTokenDto;
 
 public interface MemberService {
 
@@ -15,5 +17,11 @@ public interface MemberService {
 	boolean resetPassword(String id, String password);
 
 	boolean updateMemberPassword(MemberInput memberInput);
+
+	CustomUserDetails loadUserByUsername(String userId);
+
+	CustomUserDetails apiUserDetail(String userId);
+
+	MemberTokenDto getloginToken(CustomUserDetails principal);
 
 }

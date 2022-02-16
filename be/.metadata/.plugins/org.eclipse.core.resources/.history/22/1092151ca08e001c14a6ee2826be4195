@@ -1,0 +1,32 @@
+package com.arbietDiary.arbietdiary.member.model;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
+import com.arbietDiary.arbietdiary.member.entity.Member;
+
+public class CustomUserDetails implements UserDetails {
+	private Member member;
+	private Collection<? extends GrantedAuthority> authorities;
+
+	public CustomUserDetails(Member member, List<String> roleList) {
+		this.member= member;
+		this.authorities = this.stringToGrantedAuth(roleList);
+	}
+	
+	private Collection<? extends GrantedAuthority> stringToGrantedAuth(List<String> roleList){
+		List<GrantedAuthority> authList = new ArrayList<GrantedAuthority>();
+		for(String role : roleList) {
+			authList.add(new SimpleGrantedAuthority(role));
+		}
+		return authList;
+	}
+	
+	
+
+}
