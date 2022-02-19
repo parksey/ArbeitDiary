@@ -1,0 +1,5 @@
+package com.arbietDiary.arbietdiary.project.model.type;
+
+public class ProjectRoleType {
+
+}

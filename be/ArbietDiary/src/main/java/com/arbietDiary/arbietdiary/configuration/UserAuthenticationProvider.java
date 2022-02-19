@@ -30,7 +30,7 @@ public class UserAuthenticationProvider implements AuthenticationProvider{
 		System.out.println("[Provider] : userPw = "+userPw);
 	
 		CustomUserDetails userDetails = (CustomUserDetails)memberService.loadUserByUsername(userId);
-		
+		System.out.println("[Provider] : userDetails = "+userDetails.getUsername());
 		
 		if(!bCryptPasswordEncoder.matches(userPw, userDetails.getPassword())) {
 			System.out.println("[Provider: 비밀번호 오류]");

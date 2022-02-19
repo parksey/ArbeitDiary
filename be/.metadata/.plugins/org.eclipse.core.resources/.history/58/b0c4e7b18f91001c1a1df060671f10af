@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>기존 프로젝트</title>
+	</head>
+	<body>
+		<h1>프로젝트</h1>
+		<div th:replace="fragment/layout.html :: fragment-body-menu"></div>
+		
+		<div th:text="${list}">리스트</div>
+		<table>
+				<thead>
+					<tr>
+						<th>NO</th>
+						<th>이메일</th>
+						<th>이름</th>
+						<th>연락처</th>
+						<th>가입일</th>
+						<th>이메일 인증 여부</th>
+						<th>관리자 여부</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="list : ${lists}">
+						<td><span th:text="${list.memberNum}">--</span></td>
+						<td >
+							<a th:text="${list.userId}" th:href="${'detail.do?userId=' + list.userId}"></a>
+						</td>
+						<td th:text="${list.userName}"></td>
+						<td th:text="${list.phone}"></td>
+						<td th:text="${list.regDt}"></td>
+						<td>
+							<p th:if="${list.emailAuthYn eq true}">Y</p>
+							<p th:if="${list.emailAuthYn eq fakse}">N</p>
+						</td>
+						<td>
+							<p th:if="${list.adminYn eq true}">Y</p>
+							<p th:if="${list.adminYn eq fakse}">N</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+	</body>
+</html>

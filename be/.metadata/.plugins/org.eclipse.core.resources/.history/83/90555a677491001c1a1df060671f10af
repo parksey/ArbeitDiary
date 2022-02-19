@@ -1,0 +1,5 @@
+package com.arbietDiary.arbietdiary.project;
+
+public interface ProjectService {
+
+}

@@ -47,7 +47,7 @@ public class CustomUserDetails implements UserDetails {
 	@Override
 	public String getUsername() {
 		// TODO Auto-generated method stub
-		return member.getUserName();
+		return member.getUserId();
 	}
 	
 

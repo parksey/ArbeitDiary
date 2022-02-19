@@ -1,0 +1,56 @@
+package com.arbietDiary.arbietdiary.project.service.impl;
+
+import java.time.LocalDateTime;
+import java.util.Optional;
+
+import org.springframework.stereotype.Service;
+
+import com.arbietDiary.arbietdiary.member.entity.Member;
+import com.arbietDiary.arbietdiary.member.repository.MemberRepository;
+import com.arbietDiary.arbietdiary.memberproject.entity.MemberProject;
+import com.arbietDiary.arbietdiary.memberproject.repository.MemberProjectRepository;
+import com.arbietDiary.arbietdiary.project.entity.Project;
+import com.arbietDiary.arbietdiary.project.model.type.ProjectRoleType;
+import com.arbietDiary.arbietdiary.project.repository.ProjectRepository;
+import com.arbietDiary.arbietdiary.project.service.ProjectService;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class ProjectServiceImpl implements ProjectService{
+	private final MemberRepository memberRepository;
+	private final ProjectRepository projectRepository;
+	private final MemberProjectRepository memberProjectRepository;
+	
+	@Override
+	public boolean add(String userId, String projectName) {
+		// TODO Auto-generated method stub
+		Optional<Member> optionalMember = memberRepository.findById(userId);
+		if(optionalMember.isEmpty()) {
+			System.out.println("[새 프로젝트] : 회원 정보 오류");
+			return false;
+		}
+		
+		Project project = Project.builder()
+				.projectName(projectName)
+				.regDt(LocalDateTime.now())
+				.build();
+		Member member = optionalMember.get();
+		
+		MemberProject memberProject = MemberProject.builder()
+				.member(member)
+				.project(project)
+				.projectRole(ProjectRoleType.MASTER)
+				.regDt(LocalDateTime.now())
+				.build();
+		
+		System.out.println("[새 프로젝트] : MemberProject = "+memberProject);
+		
+		projectRepository.save(project);
+		memberProjectRepository.save(memberProject);
+		return false;
+	}
+
+	
+}

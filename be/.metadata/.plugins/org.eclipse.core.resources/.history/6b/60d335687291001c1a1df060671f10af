@@ -1,0 +1,5 @@
+package com.arbietDiary.arbietdiary.project.entity;
+
+public class Project {
+
+}

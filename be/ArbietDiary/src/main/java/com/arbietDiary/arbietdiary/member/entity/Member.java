@@ -9,11 +9,13 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.springframework.security.core.GrantedAuthority;
 
 import com.arbietDiary.arbietdiary.member.model.MemberCode;
+import com.arbietDiary.arbietdiary.memberproject.entity.MemberProject;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -58,6 +60,11 @@ public class Member implements MemberCode{
 	
 	@Column(length = 1000)
 	String refreshToken;
+	
+
+	@OneToMany(mappedBy = "member")
+	List<MemberProject> projects = new ArrayList<>();
+	
 	
 	public List<String> getRoleList(){
 		if(this.roles.length() > 0) {

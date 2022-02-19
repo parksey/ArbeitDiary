@@ -1,0 +1,10 @@
+package com.arbietDiary.arbietdiary.project.model;
+
+public class ProjectInput {
+	String projectName;
+	
+	Long projectId;
+	Long joinId;
+	
+	String targetId;
+}

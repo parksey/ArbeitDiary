@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang = "ko" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset = "utf-8">
+		<title>기존 프로젝트</title>
+	</head>
+	<body>
+		<h1>프로젝트</h1>
+		<div th:replace="fragment/layout.html :: fragment-body-menu"></div>
+		
+		<div th:text="${list}">리스트</div>
+	</body>
+</html>
