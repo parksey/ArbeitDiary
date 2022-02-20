@@ -1,0 +1,12 @@
+package com.arbietDiary.arbietdiary.secret;
+
+
+public interface SecretData {
+	static final String localUrl = "http://localhost:3000"; 
+	
+	static final long ACCESS_TOKEN_VALIDATION_SECOND = 1000L *60 * 30;
+	static final long REFRESH_TOKEN_VALIDATION_SECCOND = 1000L * 60 * 60 * 24;
+	
+	static final String SECRECT_KEY = "secretKey";
+	static final String REFRESH_KEY = "refreshKey";
+}

@@ -1,0 +1,5 @@
+package com.arbietDiary.arbietdiarycomment.entity;
+
+public class Comment {
+
+}

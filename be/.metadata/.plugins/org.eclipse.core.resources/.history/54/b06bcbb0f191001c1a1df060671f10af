@@ -1,0 +1,30 @@
+package com.arbietDiary.arbietdiary.calendar.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+import com.arbietDiary.arbietdiary.project.entity.Project;
+
+@Table(name = "calendar")
+@Entity
+public class Calendar {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "calendar_id")
+	Long calendarId;
+	
+	/*
+	 * 프로젝트 확장시 사용
+	 */
+	
+	@OneToOne
+	@JoinColumn(name = "project_id")
+	Project project;
+	
+}

@@ -1,0 +1,9 @@
+package com.arbietDiary.arbietdiary.calendar.service;
+
+import com.arbietDiary.arbietdiary.calendar.entity.Calendar;
+
+public interface DateService{
+
+	boolean makeCalendarDate(Calendar calendar);
+
+}

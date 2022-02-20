@@ -1,0 +1,14 @@
+package com.arbietDiary.arbietdiary.calendar.service;
+
+import java.time.LocalDateTime;
+
+import com.arbietDiary.arbietdiary.calendar.entity.Calendar;
+import com.arbietDiary.arbietdiary.calendar.entity.Date;
+
+public interface DateService{
+
+	boolean makeCalendarDate(Calendar calendar);
+
+	Date makeDate(Calendar calendar, LocalDateTime day);
+
+}

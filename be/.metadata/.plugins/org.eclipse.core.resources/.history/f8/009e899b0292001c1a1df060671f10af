@@ -1,0 +1,5 @@
+package com.arbietDiary.arbietdiary.comment.controller;
+
+public class CommentController {
+
+}

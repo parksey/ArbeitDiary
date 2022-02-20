@@ -1,0 +1,5 @@
+package com.arbietDiary.arbietdiary.calendar.entity;
+
+public class Date {
+
+}

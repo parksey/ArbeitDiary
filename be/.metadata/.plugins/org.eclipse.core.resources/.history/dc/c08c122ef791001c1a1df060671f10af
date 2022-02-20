@@ -1,0 +1,24 @@
+package com.arbietDiary.arbietdiary.calendar.service.impl;
+
+import org.springframework.stereotype.Service;
+
+import com.arbietDiary.arbietdiary.calendar.repository.CalendarRepository;
+import com.arbietDiary.arbietdiary.calendar.service.CalendarService;
+import com.arbietDiary.arbietdiary.project.entity.Project;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class CalendarServiceImpl implements CalendarService{
+	private final CalendarRepository calendarRepository;
+	
+	@Override
+	public boolean makeCalendar(Project project) {
+		boolean isExist = calendarRepository.existsByProject_Id(project.getId());
+		if(isExist) {
+			System.out.println("[캘린더 생성] : 실패");
+			return false;
+		}
+	}
+}

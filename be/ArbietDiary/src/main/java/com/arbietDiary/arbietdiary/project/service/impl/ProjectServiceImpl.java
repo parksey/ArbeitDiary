@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.arbietDiary.arbietdiary.calendar.service.CalendarService;
 import com.arbietDiary.arbietdiary.member.entity.Member;
 import com.arbietDiary.arbietdiary.member.model.UserListInterface;
 import com.arbietDiary.arbietdiary.member.repository.MemberRepository;
@@ -32,6 +33,8 @@ public class ProjectServiceImpl implements ProjectService{
 	private final MemberRepository memberRepository;
 	private final ProjectRepository projectRepository;
 	private final MemberProjectRepository memberProjectRepository;
+	
+	private final CalendarService calendarService;
 	
 	@Override
 	public boolean add(String userId, String projectName) {
@@ -59,6 +62,8 @@ public class ProjectServiceImpl implements ProjectService{
 		
 		projectRepository.save(project);
 		memberProjectRepository.save(memberProject);
+		
+		calendarService.makeCalendar(project);
 		return false;
 	}
 

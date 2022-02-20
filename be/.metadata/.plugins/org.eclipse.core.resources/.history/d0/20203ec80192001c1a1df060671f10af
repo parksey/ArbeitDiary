@@ -1,0 +1,5 @@
+package com.arbietDiary.arbietdiary.comment.service.impl;
+
+public class CommentServiceImpl {
+
+}

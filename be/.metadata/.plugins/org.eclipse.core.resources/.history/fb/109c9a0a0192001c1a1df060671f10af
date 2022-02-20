@@ -1,0 +1,17 @@
+package com.arbietDiary.arbietdiarycomment.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@Table(name = "comment")
+@Entity
+public class Comment {
+
+}
