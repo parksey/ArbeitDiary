@@ -1,0 +1,7 @@
+package com.arbietDiary.arbietdiary.datemember.service.impl;
+
+import com.arbietDiary.arbietdiary.datemember.service.DateMemberService;
+
+public class DateMemberServiceImpl implements DateMemberService{
+
+}

@@ -1,0 +1,17 @@
+package com.arbietDiary.arbietdiary.calendar.model.dto;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import com.arbietDiary.arbietdiary.calendar.model.dto.FixedTimesDto;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public class UserListsDto {
+	String userId;
+	String name;
+	List<FixedTimesDto> fixedtimes = new ArrayList<>();
+}

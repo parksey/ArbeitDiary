@@ -67,6 +67,8 @@ public class Member implements MemberCode{
 			fetch = FetchType.LAZY)
 	List<MemberProject> projects = new ArrayList<>();
 	
+	@OneToMany(mappedBy = "member")
+	List<Work> works = new ArrayList<Work>();
 	
 	public List<String> getRoleList(){
 		if(this.roles.length() > 0) {

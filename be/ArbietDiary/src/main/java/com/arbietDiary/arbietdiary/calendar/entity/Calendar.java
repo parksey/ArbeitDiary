@@ -17,11 +17,15 @@ import com.arbietDiary.arbietdiary.project.entity.Project;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Getter
+@Setter
 @Table(name = "calendar")
 @Entity
 public class Calendar {

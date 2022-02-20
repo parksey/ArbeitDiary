@@ -14,11 +14,15 @@ import com.arbietDiary.arbietdiary.calendar.entity.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Getter
+@Setter
 @Table(name = "comment")
 @Entity
 public class Comment {

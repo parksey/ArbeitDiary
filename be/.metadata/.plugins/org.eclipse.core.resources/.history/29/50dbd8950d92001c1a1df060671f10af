@@ -1,0 +1,5 @@
+package com.arbietDiary.arbietdiary.calendar.model.dto;
+
+public class FixedTimesDto {
+
+}

@@ -43,7 +43,7 @@ public class CommentServiceImpl implements CommentService{
 				.userId(userId)
 				.text(text)
 				.calendarId(calendarId)
-				.userName(member.get().getUserId())
+				.userName(member.get().getUserName())
 				.date(date.get())
 				.build();
 		

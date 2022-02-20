@@ -1,0 +1,63 @@
+package com.arbietDiary.arbietdiary.calendar.controller;
+
+import java.security.Principal;
+
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.arbietDiary.arbietdiary.calendar.model.CalendarDateList;
+import com.arbietDiary.arbietdiary.calendar.model.CalendarInput;
+import com.arbietDiary.arbietdiary.calendar.model.CalendarUserList;
+import com.arbietDiary.arbietdiary.calendar.model.dto.CalendarDto;
+import com.arbietDiary.arbietdiary.calendar.repository.CalendarRepository;
+import com.arbietDiary.arbietdiary.calendar.service.CalendarService;
+import com.arbietDiary.arbietdiary.project.service.ProjectService;
+
+@RestController
+public class ApiCalendarController {
+	private CalendarRepository calendarRepository;
+	
+	private final ProjectService projectService;
+	private final CalendarService calendarService;
+}
+	@PostMapping("api/load")
+	public ResponseEntity<?> load(@RequestBody CalendarInput calendarInput, Principal principal){
+		System.out.println("[API LOAD]");
+		CalendarUserList calendarUserList = projectService.getUserList(calendarInput.getProjectId());
+		CalendarDateList calendarDateList = calendarRepository.findByProject_Id(calendarInput.getProjectId());
+		CalendarDto calendarDto = new CalendarDto(calendarUserList, calendarDateList);
+		CalendarDto resultCalendar = calendarService.addWorkTime(calendarDto);
+		System.out.println("[API LOAD: GET DTO] : 성공");
+		System.out.println(calendarDto.equals(resultCalendar));
+		return ResponseEntity.ok().body(resultCalendar);
+	}
+	
+	@PostMapping("api/auto")
+	public ResponseEntity<?> self(@RequestBody WorkUserListRequest workUserList, Principal principal){
+		System.out.println(workUserList);
+		List<Date> beforeUserList = dateMemberService.exceptAutoTime(workUserList.getProjectId(), workUserList.getCalendarId());
+		System.out.println("[이전 값 찾기 완료]==========================================================");
+		boolean isUserListUpdate = workService.updateUserList(workUserList, principal.getName());
+		System.out.println("[현재 유저 데이터 업데이트 완료] : =========================================================="+isUserListUpdate);
+		CalendarUserList calendarUserList = projectService.getUserList(workUserList.getProjectId());
+		CalendarDto calendarDto = new CalendarDto(calendarUserList); 
+		CalendarDto resultCalendar = calendarService.addWorkTime(calendarDto);
+		System.out.println("[userList값 가져오기 성공]==========================================================");
+		boolean result = dateMemberService.updateDailyWork(workUserList.getCalendarId(), resultCalendar.getUserList(), beforeUserList);
+		System.out.println("??");
+		return ResponseEntity.ok().body(beforeUserList);
+	}
+	
+	@PostMapping("api/update")
+	public ResponseEntity<?> calendar(@RequestBody WorkUserListRequest workUserList, Principal principal){
+		System.out.println("=============================================");
+		boolean result = dateMemberService.loadDailyWork(workUserList.getCalendarId(), workUserList.getDates());
+		System.out.println("=============================================");
+		CalendarUserList calendarUserList = projectService.getUserList(workUserList.getProjectId());
+		CalendarInterface calendarResponse = calendarRepository.findByProjectId(workUserList.getProjectId());
+		CalendarDto calendarDto = new CalendarDto(calendarUserList, calendarResponse);
+		CalendarDto resultCalendar = calendarService.addWorkTime(calendarDto);
+		return ResponseEntity.
+}

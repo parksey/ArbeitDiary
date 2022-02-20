@@ -7,10 +7,12 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import com.arbietDiary.arbietdiary.calendar.model.CalendarUserList;
 import com.arbietDiary.arbietdiary.calendar.service.CalendarService;
 import com.arbietDiary.arbietdiary.member.entity.Member;
 import com.arbietDiary.arbietdiary.member.model.UserListInterface;
 import com.arbietDiary.arbietdiary.member.repository.MemberRepository;
+import com.arbietDiary.arbietdiary.member.service.WorkService;
 import com.arbietDiary.arbietdiary.memberproject.entity.MemberProject;
 import com.arbietDiary.arbietdiary.memberproject.model.UserResponseDto;
 import com.arbietDiary.arbietdiary.memberproject.repository.MemberProjectRepository;
@@ -35,6 +37,12 @@ public class ProjectServiceImpl implements ProjectService{
 	private final MemberProjectRepository memberProjectRepository;
 	
 	private final CalendarService calendarService;
+	private final WorkService workService;
+	
+	@Override
+	public CalendarUserList getUserList (Long projectId) {
+		return projectRepository.findById(projectId,CalendarUserList.class);
+	}
 	
 	@Override
 	public boolean add(String userId, String projectName) {
@@ -61,6 +69,7 @@ public class ProjectServiceImpl implements ProjectService{
 		System.out.println("[새 프로젝트] : MemberProject = "+memberProject);
 		
 		projectRepository.save(project);
+		workService.initWorkdays(member, project.getId());
 		memberProjectRepository.save(memberProject);
 		
 		calendarService.makeCalendar(project);
@@ -103,7 +112,7 @@ public class ProjectServiceImpl implements ProjectService{
 				.regDt(LocalDateTime.now())
 				.build();
 		
-
+		workService.initWorkdays(member, project.getId());
 		memberProjectRepository.save(memberProject);
 		return true;
 	}

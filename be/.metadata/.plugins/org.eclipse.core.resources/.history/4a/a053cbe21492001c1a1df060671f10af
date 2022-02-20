@@ -1,0 +1,8 @@
+package com.arbietDiary.arbietdiary.calendar.model.requestDto;
+
+public class DayIssues {
+	String name;
+	String time;
+	String text;
+	String userId;
+}

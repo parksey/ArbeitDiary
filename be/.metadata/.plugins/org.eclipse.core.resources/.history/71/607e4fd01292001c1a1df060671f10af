@@ -1,0 +1,23 @@
+package com.arbietDiary.arbietdiary.member.service.impl;
+
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.arbietDiary.arbietdiary.calendar.model.FixedTimeInterface;
+import com.arbietDiary.arbietdiary.member.repository.WorkRepository;
+import com.arbietDiary.arbietdiary.member.service.WorkService;
+
+import lombok.RequiredArgsConstructor;
+
+@RequiredArgsConstructor
+@Service
+public class WorkServiceImpl implements WorkService{
+	private final WorkRepository workRepository;
+	
+	@Override
+	public List<FixedTimeInterface> getWorkTimeWProjectId(String projectIdText, String userId) {
+		Long projectId = Long.parseLong(projectIdText);
+		return workRepository.findByProjectIdAndMember_UserId(projectId, userId);
+	}
+}
