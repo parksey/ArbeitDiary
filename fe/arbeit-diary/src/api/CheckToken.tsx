@@ -19,6 +19,7 @@ export function CheckTokenMoveHome() {
 
 export async function checkEffectiveToken(dispatch: any, history: any) {
   const token = localStorage.getItem("token");
+  console.log(token);
   const response = await getUserinfoApi(token !== null ? token : "", dispatch);
   if (response === false) {
     alert("만료된 토큰입니다.");

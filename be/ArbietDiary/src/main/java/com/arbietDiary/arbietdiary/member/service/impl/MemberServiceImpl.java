@@ -199,7 +199,7 @@ public class MemberServiceImpl implements MemberService{
 			String email= member.getUserId();
 			String subject = "재이메일 인증 안내입니다.";
 			String text = "<h1>이메일 인증안내입니다.</h1><p>아래 링크를 클릭하여 가입을 완료하세요</p>"
-					+"<div><a href='"+SecretData.localUrl+"/member/email-auth?id="+uuid+"'>가입 완료</a>하러가기</div>";
+					+"<div><a href='"+SecretData.localUrl+"/done?id="+uuid+"'>가입 완료</a>하러가기</div>";
 			mailComponent.sendMail(email, subject, text);
 			throw new MemberNotEmailAllthException("이메일 활성화 이후 로그인 해주세요.");
 		}

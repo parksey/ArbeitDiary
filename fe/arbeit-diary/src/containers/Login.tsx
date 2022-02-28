@@ -17,7 +17,7 @@ function Login(): JSX.Element {
     }).then(() => {
       let token = localStorage.getItem("token");
 
-      getUserinfoApi(token !== null ? token : "", dispatch);
+      getUserinfoApi(token, dispatch);
       if (CheckToken()) {
         history.push("/");
       } else {

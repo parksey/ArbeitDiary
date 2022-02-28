@@ -49,8 +49,7 @@ function Calendar({ onConfirm, onConfirmDay, constproject }: CalendarProps) {
               let workflag = false;
 
               try {
-                dates
-                  .filter((date) => date.date === days.format("YYMMDD"))[0]
+                dates.filter((date) => date.date === days.format("YYMMDD"))[0]
                   .users.map((user) => {
                     for (const truename in trueUserList) {
                       if (user.name === trueUserList[truename]) {

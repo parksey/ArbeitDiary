@@ -3,6 +3,7 @@ package com.arbietDiary.arbietdiary.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.web.filter.CorsFilter;
 
@@ -22,6 +24,8 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	private final MemberService memberService;
+	private final CorsFilter corsFilter;
+	
 	@Bean
 	PasswordEncoder getPasswordEncoder() {
 		System.out.println("[Bean등록 : PasswordEncoder]");
@@ -68,15 +72,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		// JWT 토큰용
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
-		http.formLogin().disable()
+		http.formLogin()
+				.loginPage("/index.html")
 //				.loginPage("/member/login")
 //				.usernameParameter("userId")
 //				.passwordParameter("userPassword")
 //				.successHandler(authenticationSuccessHandler())
-//				.permitAll()
-//			.and()
-			.httpBasic().disable() // httpBasic 방식 사용 X
-			.addFilter(jwtAuthenticationFilter())
+				//.permitAll()
+			.and()
+			.httpBasic().authenticationEntryPoint(new NoPopupBasicAuthenticatioinEntryPoint())
+			.and()
+			.addFilter(corsFilter)
+			.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
 			.addFilter(new JwtAuthorizationFilter(authenticationManager(), memberService));
 		
 		http.logout()
@@ -84,6 +91,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.logoutSuccessUrl("/")
 			.invalidateHttpSession(true); // 로그아웃시 모두 삭제
 		
+//		http.authorizeRequests()
+//			.antMatchers(HttpMethod.OPTIONS).permitAll();
+		
+		/*
+		 * 개발용
+		 */
 		http.authorizeRequests()
 			.antMatchers("/dev"
 					,"/dev/member/login"
@@ -96,17 +109,33 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.permitAll();
 		
 		http.authorizeRequests()
-		.antMatchers("/"
-				,"/login"
-				,"/regist"
-				,"/findpassword"
-				,"/findid"
-				,"/member/reset/password")
-		.permitAll();
+		.antMatchers("/dev/member/info")
+		.access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')");
+		
+		/*
+		 * 배포 with React
+		 */
+		http.authorizeRequests()
+			.antMatchers("/"
+					,"/done"
+					,"/login"
+					,"/regist"
+					,"/findpassword"
+					,"/findid"
+					,"/member/reset/password")
+			.permitAll()
+			.mvcMatchers("/index.html")
+			.permitAll();
 			
 		http.authorizeRequests()
-			.antMatchers("/member/info")
-			.access("hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')");
+		.antMatchers("/api/userRegist"
+				,"/api/login"
+				,"/api/emailAuth"
+				,"/api/find/password"
+				,"/api/reset/password"
+				,"/api/find/userid"
+				)
+		.permitAll();
 		
 		super.configure(http);
 	}
@@ -121,15 +150,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().mvcMatchers(
                 // "원하는 url",
-//                "/index.html",   // front-end 에서 build한 static file
-//                "/favicon.ico",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
+                "/index.html",   // front-end 에서 build한 static file
+                "/favicon.ico",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
 //                "/css/**",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
 //                "/fonts/**",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
 //                "/img/**",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
 //                "/js/**",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
-//                "/manifest.json",
-//                "/static/**",
-				"/**"
+                "/*.json",
+                "/*.png",
+				"/static/**"
          );//.requestMatchers(PathRequest.toStaticResources().atCommonLocations());
 	    			 
 	}

@@ -17,7 +17,7 @@ function CheckEmailModal({ visible, onCancel }: CheckEmailModalProps) {
       <div className="emailmodal" onClick={(event) => event.stopPropagation()}>
         {/*이벤트 캡쳐링 방지 */}
         회원가입이 완료되었습니다 <br /> <br />
-        이메일을 확인해주세요
+        이메일을 확인해주세요 <br /> <br /> (1~2분정도 소요될 수 있습니다)
       </div>
     </div>
   );

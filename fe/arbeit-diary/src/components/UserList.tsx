@@ -71,7 +71,7 @@ function UserList({
           joinId,
           targetId: userId,
         });
-        history.push("/");
+        history.push("/oldproject");
       }
     };
 

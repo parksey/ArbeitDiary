@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { MdAdd } from "react-icons/md";
 import "../css/components/Schedule.css";
@@ -93,6 +93,8 @@ function Schedule({ selectedDay, projectRole }: ScheduleProps) {
 
   const UserShedule = ({ worktimes, username }: UserScheduleProps) => {
     const worktimelst = worktimes.split("");
+    const [dragflag, setdragflag] = useState(false);
+    const [draglst, setdraglst] = useState<number[]>([]);
 
     const onclicktime = (index: number) => {
       if (projectRole === "MASTER") {
@@ -106,6 +108,7 @@ function Schedule({ selectedDay, projectRole }: ScheduleProps) {
         );
       }
     };
+
     return (
       <div className="worktimes">
         {worktimelst.map((worktime, index) => {
@@ -116,6 +119,18 @@ function Schedule({ selectedDay, projectRole }: ScheduleProps) {
               onClick={() => {
                 onclicktime(index);
               }}
+              onMouseDown={() => {
+                setdragflag(true);
+                setdraglst(draglst.concat([index]));
+              }}
+              onMouseUp={() => {
+                setdragflag(false);
+                draglst.map((index) => onclicktime(index));
+                setdraglst([]);
+              }}
+              onMouseEnter={() =>
+                dragflag ? setdraglst(draglst.concat([index])) : ""
+              }
             >
               {username}
             </div>
@@ -126,6 +141,18 @@ function Schedule({ selectedDay, projectRole }: ScheduleProps) {
               onClick={() => {
                 onclicktime(index);
               }}
+              onMouseDown={() => {
+                setdragflag(true);
+                setdraglst(draglst.concat([index]));
+              }}
+              onMouseUp={() => {
+                setdragflag(false);
+                draglst.map((index) => onclicktime(index));
+                setdraglst([]);
+              }}
+              onMouseEnter={() =>
+                dragflag ? setdraglst(draglst.concat([index])) : ""
+              }
             ></div>
           );
         })}

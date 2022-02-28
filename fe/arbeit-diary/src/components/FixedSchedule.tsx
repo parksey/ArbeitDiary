@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router";
 import { getCalendarApi, sendfixedscheduleapi } from "../api/UserApi";
@@ -56,6 +56,8 @@ function FixedSchedule({
 
   const FixedScheduletime = ({ worktimes, dayId }: FixedscheduletimeProps) => {
     const worktimelst = worktimes.split("");
+    const [dragflag, setdragflag] = useState(false);
+    const [draglst, setdraglst] = useState<number[]>([]);
 
     return (
       <div className="worktimes">
@@ -74,6 +76,26 @@ function FixedSchedule({
                   })
                 )
               }
+              onMouseDown={() => {
+                setdragflag(true);
+                setdraglst(draglst.concat([index]));
+              }}
+              onMouseUp={() => {
+                setdragflag(false);
+                draglst.map((index) =>
+                  dispatch(
+                    toggleFixedSchedule({
+                      userId,
+                      dayId,
+                      index,
+                    })
+                  )
+                );
+                setdraglst([]);
+              }}
+              onMouseEnter={() =>
+                dragflag ? setdraglst(draglst.concat([index])) : ""
+              }
             ></div>
           ) : (
             <div
@@ -87,6 +109,26 @@ function FixedSchedule({
                     index,
                   })
                 )
+              }
+              onMouseDown={() => {
+                setdragflag(true);
+                setdraglst(draglst.concat([index]));
+              }}
+              onMouseUp={() => {
+                setdragflag(false);
+                draglst.map((index) =>
+                  dispatch(
+                    toggleFixedSchedule({
+                      userId,
+                      dayId,
+                      index,
+                    })
+                  )
+                );
+                setdraglst([]);
+              }}
+              onMouseEnter={() =>
+                dragflag ? setdraglst(draglst.concat([index])) : ""
               }
             ></div>
           );
@@ -139,7 +181,10 @@ function FixedSchedule({
             </div>
             <div
               className="settingBoxbtn btn"
-              onClick={() => setFixedSchedulevisible(false)}
+              onClick={() => {
+                setFixedSchedulevisible(false);
+                history.go(0);
+              }}
             >
               취소
             </div>

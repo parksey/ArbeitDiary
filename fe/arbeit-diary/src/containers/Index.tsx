@@ -10,11 +10,7 @@ function Index() {
 
   useEffect(() => {
     const token = localStorage.getItem("token");
-    getUserinfoApi(
-      
-      token !== null ? token : "",
-      dispatch
-    );
+    getUserinfoApi(token, dispatch);
   }, []);
 
   return (

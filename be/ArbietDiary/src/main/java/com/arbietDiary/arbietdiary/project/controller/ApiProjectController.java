@@ -2,11 +2,15 @@ package com.arbietDiary.arbietdiary.project.controller;
 
 import java.security.Principal;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.arbietDiary.arbietdiary.configuration.JwtAuthorizationFilter;
 import com.arbietDiary.arbietdiary.project.model.ProjectInput;
 import com.arbietDiary.arbietdiary.project.service.ProjectService;
 
@@ -18,7 +22,7 @@ public class ApiProjectController {
 	private final ProjectService projectService;
 	
 	@PostMapping("/api/oldproject")
-	public ResponseEntity<?> list(Principal principal){
+	public ResponseEntity<?> list(HttpServletRequest request, Principal principal){
 		System.out.println("[API OldProject] : 요청");
 		System.out.println("[API OldProject] : name = " + principal.getName());
 		String result = projectService.responseOldProject(principal.getName());

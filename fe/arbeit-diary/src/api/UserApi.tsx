@@ -3,7 +3,8 @@ import { useHistory } from "react-router";
 import { getCalendarinfo } from "../module/Calendar";
 import { get_userinfo, Usertype } from "../module/User";
 
-export const api = "http://54.180.70.202";
+export const api = "http://localhost:8080";
+//export const api = "http://54.180.70.202:8080";
 
 type UserApiprops = {
   userId: string;
@@ -21,22 +22,24 @@ type EmailRequestApiprops = {
   id: string;
 };
 
-export async function getUserinfoApi(token: string, dispatch: any) {
-  try {
-    await axios({
-      method: "post",
-      url: `${api}/api/oldproject`,
-      headers: {
-        'Accept': "application/json", //prettier-ignore
-        'Content-Type': "application/json", //prettier-ignore
-        Authorization: token,
-      },
-    }).then((response) => {
-      dispatch(get_userinfo(response.data));
-    });
-  } catch (e) {
-    console.log("get logintoken error!!");
-    return false;
+export async function getUserinfoApi(token: any, dispatch: any) {
+  if (token !== null) {
+    try {
+      await axios({
+        method: "post",
+        url: `${api}/api/oldproject`,
+        headers: {
+          'Accept': "application/json", //prettier-ignore
+          'Content-Type': "application/json", //prettier-ignore
+          Authorization: token,
+        },
+      }).then((response) => {
+        dispatch(get_userinfo(response.data));
+      });
+    } catch (e) {
+      console.log("get getUserinfoApi error!!");
+      return false;
+    }
   }
 }
 
@@ -57,7 +60,7 @@ export async function UserApi(params: UserApiprops) {
       console.log(response.data);
     });
   } catch (e) {
-    console.log("get logintoken error!!");
+    console.log("get UserApi error!!");
   }
 }
 

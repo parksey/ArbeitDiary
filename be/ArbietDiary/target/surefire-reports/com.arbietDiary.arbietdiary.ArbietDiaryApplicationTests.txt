@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: com.arbietDiary.arbietdiary.ArbietDiaryApplicationTests
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 17.056 s - in com.arbietDiary.arbietdiary.ArbietDiaryApplicationTests
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 29.241 s - in com.arbietDiary.arbietdiary.ArbietDiaryApplicationTests
