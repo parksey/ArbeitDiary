@@ -1,5 +1,0 @@
-package com.arbietDiary.arbietdiary.member.model;
-
-public interface MemberCode {
-
-}

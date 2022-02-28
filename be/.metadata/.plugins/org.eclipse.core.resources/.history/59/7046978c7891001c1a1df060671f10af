@@ -1,7 +1,0 @@
-package com.arbietDiary.arbietdiary.project.service;
-
-import com.arbietDiary.arbietdiary.project.model.ProjectInput;
-
-public interface ProjectService {
-	boolean add (String userId,ProjectInput projectInput);
-}

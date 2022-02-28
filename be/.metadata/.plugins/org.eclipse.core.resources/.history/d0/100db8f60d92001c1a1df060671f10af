@@ -1,5 +1,0 @@
-package com.arbietDiary.arbietdiary.calendar.model.requestDto;
-
-public class DatesDto {
-
-}

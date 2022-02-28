@@ -1,9 +1,0 @@
-package com.arbietDiary.arbietdiary.memberproject.entity.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-@Repository
-public interface MemberProjectRepository extends JpaRepository<MemberProject, Long>{
-
-}

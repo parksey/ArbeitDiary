@@ -1,0 +1,50 @@
+.background {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  top: 0px;
+  z-index: 1;
+  background: rgb(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+}
+
+.visible {
+  display: flex;
+}
+
+.background .dayDetail {
+  display: flex;
+  width: 80%;
+  height: 95%;
+  background: rgb(255, 253, 251);
+  border-radius: 5px;
+}
+
+.dayDetail .dayDetailRight {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.dayDetail .dayDetailRight .cancel-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1rem;
+  margin-left: 1.5rem;
+  margin-top: 5%;
+  width: 15%;
+  height: 5%;
+
+  border-radius: 30px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  transition: 0.3s;
+  color: #eee;
+  background: var(--main-color);
+}
+
+.dayDetail .dayDetailRight .cancel-btn:hover {
+  background-color: #eee;
+  color: var(--main-color);
+}

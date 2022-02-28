@@ -1,5 +1,7 @@
 package com.arbietDiary.arbietdiary.member.service;
 
+import java.util.List;
+
 import com.arbietDiary.arbietdiary.member.model.CustomUserDetails;
 import com.arbietDiary.arbietdiary.member.model.MemberInput;
 import com.arbietDiary.arbietdiary.member.model.MemberTokenDto;
@@ -10,7 +12,7 @@ public interface MemberService {
 
 	boolean emailAuth(String uuid);
 
-	boolean sendResetPassword(MemberInput memberInput);
+	boolean sendResetPassword(String userId, String userName);
 
 	boolean checkResetPasswordKey(String uuid);
 
@@ -24,4 +26,5 @@ public interface MemberService {
 
 	MemberTokenDto getloginToken(CustomUserDetails principal);
 
+	List<String> getUserId(String userPhone, String userName);
 }

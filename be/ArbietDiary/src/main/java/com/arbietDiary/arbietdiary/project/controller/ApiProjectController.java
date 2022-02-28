@@ -20,6 +20,7 @@ public class ApiProjectController {
 	@PostMapping("/api/oldproject")
 	public ResponseEntity<?> list(Principal principal){
 		System.out.println("[API OldProject] : 요청");
+		System.out.println("[API OldProject] : name = " + principal.getName());
 		String result = projectService.responseOldProject(principal.getName());
 		System.out.println("[API OldProject] : result = "+result);
 		return ResponseEntity.ok().body(result);

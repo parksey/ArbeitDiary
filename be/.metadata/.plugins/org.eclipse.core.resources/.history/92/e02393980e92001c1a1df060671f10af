@@ -1,7 +1,0 @@
-package com.arbietDiary.arbietdiary.datemember.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-public interface DateMemberRepository extends JpaRepository<DateMember, Long>{
-
-}

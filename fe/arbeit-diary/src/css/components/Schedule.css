@@ -1,0 +1,135 @@
+.schedule {
+  display: flex;
+  overflow: auto;
+  position: relative;
+  margin: 2rem 0% 2% 2rem;
+  padding: 0 1rem;
+  width: 80%;
+  background: #fff;
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.schedule::-webkit-scrollbar {
+  width: 10px;
+  flex: 0 0 auto;
+}
+.schedule::-webkit-scrollbar-thumb {
+  background-color: var(--main-black);
+  border-radius: 10px;
+}
+.schedule::-webkit-scrollbar-track {
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}
+
+.schedule .times {
+  max-width: 10rem;
+}
+
+.schedule .column-line {
+  width: 100%;
+  min-width: 60px;
+}
+.schedule .worktimes div:nth-child(2n) {
+  border-bottom: 1px solid rgb(167, 167, 167, 0.2);
+}
+
+.schedule .time {
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.schedule .worktimes {
+  border-right: 1px solid rgb(167, 167, 167, 0.8);
+}
+
+.schedule .worktimes .touch {
+  cursor: pointer;
+}
+
+.schedule .worktimes .work {
+  /* background: var(--main-color); */
+  margin-left: -1px;
+  margin-right: -1px;
+  font-size: 1rem;
+}
+
+.schedule .first-row-line {
+  height: 50px;
+  padding-top: 1rem;
+
+  text-align: center;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: #fff;
+  border-bottom: 1px solid rgb(167, 167, 167);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.schedule .first-row-line .removeScheduleuserbtn {
+  margin-left: 0.3rem;
+  transform: rotate(45deg);
+  color: #d2d2d2;
+}
+.schedule .first-row-line .removeScheduleuserbtn:hover {
+  color: #ff3d3d;
+  cursor: pointer;
+}
+
+.schedule .user-plus-btn {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.schedule .user-plus-btn .scheduleAdd {
+  font-size: 2.5rem;
+}
+
+.schedule .ScheduleUserAddForm {
+  padding: 1rem;
+  position: fixed;
+  top: 40%;
+  left: 25%;
+  width: 20%;
+  height: 20%;
+  background: #fff;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.schedule .visible {
+  display: flex;
+}
+
+.schedule .ScheduleUserAddForm input {
+  margin-top: 2rem;
+  width: 90%;
+  height: 15%;
+  border: 1px solid var(--main-color);
+  border-radius: 15px;
+  color: var(--main-color);
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.schedule .ScheduleUserAddForm .ScheduleFormRight {
+  margin-top: 1rem;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+}
+
+.schedule .ScheduleUserAddForm .ScheduleFormRight .adduserbtn {
+  width: 30%;
+}

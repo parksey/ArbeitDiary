@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.arbietDiary.arbietdiary.project.model.ProjectInput;
 import com.arbietDiary.arbietdiary.project.model.ResponseProjectList;
@@ -15,6 +16,7 @@ import com.arbietDiary.arbietdiary.project.service.ProjectService;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@RequestMapping("/dev")
 @Controller
 public class ProjectController {
 	private final ProjectService projectService;

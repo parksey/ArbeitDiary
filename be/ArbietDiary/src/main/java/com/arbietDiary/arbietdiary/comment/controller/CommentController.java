@@ -5,6 +5,7 @@ import java.security.Principal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.arbietDiary.arbietdiary.comment.model.CommentInput;
 import com.arbietDiary.arbietdiary.comment.service.CommentService;
@@ -12,6 +13,7 @@ import com.arbietDiary.arbietdiary.comment.service.CommentService;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@RequestMapping("/dev")
 @Controller
 public class CommentController {
 	private final CommentService commentService;

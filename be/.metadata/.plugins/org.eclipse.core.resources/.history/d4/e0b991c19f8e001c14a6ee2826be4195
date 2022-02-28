@@ -1,7 +1,0 @@
-package com.arbietDiary.arbietdiary.member.model;
-
-import org.springframework.security.core.userdetails.UserDetails;
-
-public class CustomUserDetails implements UserDetails {
-
-}

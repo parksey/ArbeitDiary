@@ -1,9 +1,0 @@
-package com.arbietDiary.arbietdiary.calendar.model;
-
-public class FixedTimeInterface {
-	@Value("#{target.workDay}")
-	String getDayId();
-	
-	@Value("#{target.workTime}")
-	String getWorktime();
-}

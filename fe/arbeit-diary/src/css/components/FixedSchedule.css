@@ -1,0 +1,43 @@
+.fixedSchedule {
+  width: 100%;
+  height: 95%;
+  top: 5%;
+  left: 0%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fixedSchedule .settingBox {
+  width: 60%;
+  height: 80%;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: var(--main-color);
+  font-size: 2rem;
+  font-weight: 700;
+  padding-top: 2rem;
+}
+
+.fixedSchedule .fixedtimeline {
+  width: 100%;
+}
+
+.fixedSchedule .settingBoxUp {
+  color: var(--main-black);
+  width: 85%;
+  height: 80%;
+}
+
+.fixedSchedule .settingBoxDown {
+  display: flex;
+  justify-content: space-around;
+}
+
+.fixedSchedule .settingBoxDown .settingBoxbtn {
+  width: 8rem;
+  margin: 0 2rem 1rem 2rem;
+}

@@ -1,0 +1,135 @@
+.record {
+  display: flex;
+  flex-direction: column;
+  margin: 2rem 0% 0% 2rem;
+  width: 80%;
+  height: 80%;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  position: relative;
+}
+
+.record .record-header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  text-align: right;
+}
+.record .selectedDay {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 5%;
+}
+
+.record .day-of-week {
+  margin-right: 5%;
+  margin-bottom: 2%;
+  color: #979797;
+}
+
+.record .record-body {
+  overflow: auto;
+  height: 70%;
+}
+
+.record .record-body::-webkit-scrollbar {
+  width: 10px;
+  flex: 0 0 auto;
+}
+.record .record-body::-webkit-scrollbar-thumb {
+  background-color: var(--main-black);
+  border-radius: 10px;
+}
+.record .record-body::-webkit-scrollbar-track {
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}
+
+.record .record-body .issuebox {
+  margin: 2rem 1rem;
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  font-size: 1.2rem;
+}
+
+.record .record-body .issuebox .issuedetail {
+  margin-top: 1.5rem;
+  display: flex;
+  color: #979797;
+  float: right;
+  font-size: 1rem;
+}
+.record .record-body .issuebox .issuedetail .trash {
+  color: var(--main-color);
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.record .recordform {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.record .inputBox {
+  width: 80%;
+
+  padding: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 15px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  font-size: 1.2rem;
+  height: 60px;
+  font-family: "Nanum Gothic", sans-serif;
+  color: #343a40;
+  font-weight: 700;
+}
+
+.record .inputBox:focus {
+  outline: none;
+}
+
+.record .inputBox::-webkit-scrollbar {
+  width: 10px;
+  flex: 0 0 auto;
+}
+.record .inputBox::-webkit-scrollbar-thumb {
+  background-color: var(--main-black);
+  border-radius: 10px;
+}
+.record .inputBox::-webkit-scrollbar-track {
+  background-color: grey;
+  border-radius: 10px;
+  box-shadow: inset 0px 0px 5px white;
+}
+.record .plusBox {
+  color: var(--main-color);
+  width: 40px;
+  height: 40px;
+  background: var(--main-color);
+  color: #fff0f0;
+  border-radius: 99px;
+  position: absolute;
+  bottom: 15px;
+  left: 94%;
+  transform: translate(-50%, 0);
+  cursor: pointer;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+}
+.record .plusBox:hover {
+  background: #fff0f0;
+  color: var(--main-color);
+  border: 1px solid var(--main-color);
+  transition: 0.5s;
+}

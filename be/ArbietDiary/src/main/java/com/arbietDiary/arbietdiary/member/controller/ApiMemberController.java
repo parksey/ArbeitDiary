@@ -1,5 +1,7 @@
 package com.arbietDiary.arbietdiary.member.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -63,5 +65,47 @@ public class ApiMemberController {
 		System.out.println(memberInput);
 		boolean result = memberService.emailAuth(memberInput.getId());
 		return ResponseEntity.ok().body(result);
+	}
+	
+	@PostMapping("/api/find/password") // get은 requestbody 불가
+	public ResponseEntity<?> findPassword(@RequestBody MemberInput memberInput){
+		System.out.println("[API 비밀번호 찾기]");
+		System.out.println(memberInput);
+		boolean result = false;
+		try {
+			result = memberService.sendResetPassword(memberInput.getUserId(), memberInput.getUserName());
+		} catch(Exception e) {
+			System.out.println(e);
+		}
+		System.out.println(result);
+		return ResponseEntity.ok().body(result);
+	}
+	
+	@PostMapping("/api/reset/password") // get은 requestbody 불가
+	public ResponseEntity<?> resetPassword(@RequestBody MemberInput memberInput, HttpServletRequest request){
+		System.out.println("[API 비밀번호 찾기]");
+		System.out.println(memberInput);
+		String uuid = request.getParameter("id");
+		boolean result = false;
+		try {
+			result  =memberService.checkResetPasswordKey(uuid);
+		}catch (Exception e) {
+			System.out.println(e);
+		}
+		System.out.println("[API RESULT] : "+result);
+		if(result) {
+			result = memberService.resetPassword(uuid, memberInput.getUserPassword());
+		}
+		System.out.println("[API RESULT] : "+result);
+		return ResponseEntity.ok().body(result);
+	}
+	
+	@PostMapping("/api/find/userid") // get은 requestbody 불가
+	public ResponseEntity<?> findId(@RequestBody MemberInput memberInput, HttpServletRequest request){
+		System.out.println("[API 비밀번호 찾기]");
+		System.out.println(memberInput);
+		List<String> userIdList = memberService.getUserId(memberInput.getUserPhone(), memberInput.getUserName());
+		
+		return ResponseEntity.ok().body(userIdList);
 	}
 }

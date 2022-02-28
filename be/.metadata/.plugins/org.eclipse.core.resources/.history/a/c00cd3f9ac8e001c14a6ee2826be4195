@@ -1,9 +1,0 @@
-package com.arbietDiary.arbietdiary.secret;
-
-import lombok.Getter;
-
-@Getter
-public class SecretData {
-	protected static final String localUrl = "http://localhost:3000"; 
-	
-}

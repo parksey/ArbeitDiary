@@ -1,15 +1,18 @@
 package com.arbietDiary.arbietdiary.configuration;
 
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.filter.CorsFilter;
 
 import com.arbietDiary.arbietdiary.member.service.MemberService;
 
@@ -63,15 +66,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		http.csrf().disable();
 		
 		// JWT 토큰용
-		//http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
-		http.formLogin()
-				.loginPage("/member/login")
-				.usernameParameter("userId")
-				.passwordParameter("userPassword")
-				.successHandler(authenticationSuccessHandler())
-				.permitAll()
-			.and()
+		http.formLogin().disable()
+//				.loginPage("/member/login")
+//				.usernameParameter("userId")
+//				.passwordParameter("userPassword")
+//				.successHandler(authenticationSuccessHandler())
+//				.permitAll()
+//			.and()
 			.httpBasic().disable() // httpBasic 방식 사용 X
 			.addFilter(jwtAuthenticationFilter())
 			.addFilter(new JwtAuthorizationFilter(authenticationManager(), memberService));
@@ -82,15 +85,24 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.invalidateHttpSession(true); // 로그아웃시 모두 삭제
 		
 		http.authorizeRequests()
-			.antMatchers("/"
-					,"/member/login"
-					,"/member/register"
-					,"/member/email-auth"
-					,"/member/find/password"
-					,"/member/find/email"
-					,"/member/reset/password"
-					,"/api/login")
+			.antMatchers("/dev"
+					,"/dev/member/login"
+					,"/dev/member/register"
+					,"/dev/member/email-auth"
+					,"/dev/member/find/password"
+					,"/dev/member/find/email"
+					,"/dev/member/reset/password"
+					,"/dev/api/login")
 			.permitAll();
+		
+		http.authorizeRequests()
+		.antMatchers("/"
+				,"/login"
+				,"/regist"
+				,"/findpassword"
+				,"/findid"
+				,"/member/reset/password")
+		.permitAll();
 			
 		http.authorizeRequests()
 			.antMatchers("/member/info")
@@ -103,5 +115,22 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
 		System.out.println("[초기 설정: Config-AuthenticationMangerBuilder]");
 		auth.authenticationProvider(userAuthenticationProvider());
+	}
+	
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		web.ignoring().mvcMatchers(
+                // "원하는 url",
+//                "/index.html",   // front-end 에서 build한 static file
+//                "/favicon.ico",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
+//                "/css/**",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
+//                "/fonts/**",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
+//                "/img/**",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
+//                "/js/**",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
+//                "/manifest.json",
+//                "/static/**",
+				"/**"
+         );//.requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+	    			 
 	}
 }

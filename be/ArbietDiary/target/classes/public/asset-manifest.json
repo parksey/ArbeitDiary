@@ -1,0 +1,27 @@
+{
+  "files": {
+    "main.css": "/static/css/main.13ece414.chunk.css",
+    "main.js": "/static/js/main.d948a351.chunk.js",
+    "main.js.map": "/static/js/main.d948a351.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.4ff0ee9e.js",
+    "runtime-main.js.map": "/static/js/runtime-main.4ff0ee9e.js.map",
+    "static/js/2.60abe10e.chunk.js": "/static/js/2.60abe10e.chunk.js",
+    "static/js/2.60abe10e.chunk.js.map": "/static/js/2.60abe10e.chunk.js.map",
+    "static/js/3.182b6ee0.chunk.js": "/static/js/3.182b6ee0.chunk.js",
+    "static/js/3.182b6ee0.chunk.js.map": "/static/js/3.182b6ee0.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.d45165da1c94617fd38b740241f5e3a6.js": "/precache-manifest.d45165da1c94617fd38b740241f5e3a6.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/main.13ece414.chunk.css.map": "/static/css/main.13ece414.chunk.css.map",
+    "static/js/2.60abe10e.chunk.js.LICENSE.txt": "/static/js/2.60abe10e.chunk.js.LICENSE.txt",
+    "static/media/Introduce.css": "/static/media/schedule-img.a39cbc65.PNG",
+    "static/media/MkProject.css": "/static/media/logo2.eed27357.png",
+    "static/media/Header.css": "/static/media/logo1.820cc69d.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.4ff0ee9e.js",
+    "static/js/2.60abe10e.chunk.js",
+    "static/css/main.13ece414.chunk.css",
+    "static/js/main.d948a351.chunk.js"
+  ]
+}

@@ -1,7 +1,0 @@
-package com.arbietDiary.arbietdiary.comment.service.impl;
-
-import com.arbietDiary.arbietdiary.comment.service.CommentService;
-
-public class CommentServiceImpl implements CommentService{
-
-}

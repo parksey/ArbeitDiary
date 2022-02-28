@@ -1,5 +1,0 @@
-package com.arbietDiary.arbietdiary.error;
-
-public class MemberNotEmailAllthException {
-
-}

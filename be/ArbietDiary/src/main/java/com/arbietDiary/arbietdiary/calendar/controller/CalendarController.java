@@ -3,6 +3,7 @@ package com.arbietDiary.arbietdiary.calendar.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.arbietDiary.arbietdiary.calendar.service.CalendarService;
 import com.arbietDiary.arbietdiary.project.entity.Project;
@@ -11,6 +12,7 @@ import com.arbietDiary.arbietdiary.project.repository.ProjectRepository;
 import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor
+@RequestMapping("/dev")
 @Controller
 public class CalendarController {
 	private final ProjectRepository projectRepository;

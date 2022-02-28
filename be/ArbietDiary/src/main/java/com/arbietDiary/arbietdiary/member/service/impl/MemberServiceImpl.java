@@ -92,8 +92,8 @@ public class MemberServiceImpl implements MemberService{
 	}
 	
 	@Override
-	public boolean sendResetPassword(MemberInput memberInput) {
-		Optional<Member> optionalMember = memberRepository.findByUserIdAndUserName(memberInput.getUserId(), memberInput.getUserName());
+	public boolean sendResetPassword(String userId, String userName) {
+		Optional<Member> optionalMember = memberRepository.findByUserIdAndUserName(userId, userName);
 		if(!optionalMember.isPresent()) {
 			throw new UsernameNotFoundException("회원 정보가 존재하지 않습니다.");
 		}
@@ -244,5 +244,17 @@ public class MemberServiceImpl implements MemberService{
 		memberRepository.save(user.getMember());
 		
 		return new MemberTokenDto(principal.getUsername(), accessToken, user.getMemberRefreshToken());
+	}
+	
+	
+	@Override
+	public List<String> getUserId(String userPhone, String userName) {
+		List<Member> memberList = memberRepository.findAllByUserNameAndPhone(userName, userPhone);
+		
+		List<String> idList = new ArrayList<String>();
+		for(Member member: memberList) {
+			idList.add(member.getUserId());
+		}
+		return idList;
 	}
 }

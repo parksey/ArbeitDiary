@@ -1,0 +1,54 @@
+.Stepbox {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
+  margin: 10% auto 5% auto;
+  padding: 3rem;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--main-color);
+  border-radius: 30px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+}
+.Stepbox .question {
+  display: flex;
+  font-size: 5rem;
+  font-weight: 700;
+  border: 0px;
+  margin: 5rem;
+  font-size: 4rem;
+  text-align: center;
+  color: var(--main-color);
+}
+.Stepbox .question::placeholder {
+  color: var(--main-color);
+  font-size: 4.5rem;
+  opacity: 30%;
+}
+
+.NewProject .makeProject {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  margin: 0 auto;
+  padding: 2rem;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--main-color);
+  border-radius: 30px;
+  box-shadow: rgb(100 100 111 / 20%) 0px 7px 29px 0px;
+  border: 0px;
+  background-color: var(--main-color);
+  color: #eee;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.NewProject .makeProject:hover {
+  background-color: #eee;
+  color: var(--main-color);
+}

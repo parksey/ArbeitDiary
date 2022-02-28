@@ -1,9 +1,0 @@
-package com.arbietDiary.arbietdiary.member.repository;
-
-import org.springframework.data.jpa.repository.JpaRepository;
-
-import com.arbietDiary.arbietdiary.member.entity.Member;
-
-public interface MemberRepository extends JpaRepository<Member, String>{
-
-}
