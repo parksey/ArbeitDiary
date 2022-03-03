@@ -31,9 +31,9 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
 		System.out.println("[토큰 인증]");
 		System.out.println("[토큰 인증] : internal = " +request.getRequestURI());
 		System.out.println("[토큰 인증] : ContextHolder = "+SecurityContextHolder.getContext().getAuthentication());
-		Authentication auth = (Authentication) request.getSession().getAttribute("Principal");
-		
+	
 		String jwtToken = request.getHeader(AuthConstants.AUTH_HEADER);
+		
 		System.out.println(request.getHeader(AuthConstants.AUTH_HEADER));
 		System.out.println("[토큰 인증] : 헤더토큰 = "+ jwtToken);
 
@@ -43,7 +43,7 @@ public class JwtAuthorizationFilter extends BasicAuthenticationFilter{
 			return;
 		}
 		
-		String token = request.getHeader(AuthConstants.AUTH_HEADER).replace(AuthConstants.TOKEN_TYPE + " ", "");
+		String token = jwtToken.replace(AuthConstants.TOKEN_TYPE + " ", "");
 		String username = null;
 		username = TokenUtils.getUserEmailFromAccessToken(token);
 		System.out.println("[토큰 인증] : username = " + username);

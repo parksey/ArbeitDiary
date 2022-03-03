@@ -6,20 +6,17 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
-@Configuration
+//@Configuration
 public class CorsConfig {
-	@Bean
+	//@Bean
 	public CorsFilter corsFilter() {
 		System.out.println("[Bean등록: CorsFilter]");
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		CorsConfiguration config = new CorsConfiguration();
 		
 		config.setAllowCredentials(true); // 서버 - JS JSON
-		config.addAllowedOrigin("http://localhost:3000");
-		config.addAllowedOrigin("http://localhost:8080");
-		config.addAllowedOrigin("http://54.180.70.202:8080");
-		config.addAllowedOrigin("http://54.180.70.202:80");
-		config.addAllowedOrigin("http://54.180.70.202");
+//		config.addAllowedOrigin("http://localhost:3000");
+//		config.addAllowedOrigin("http://54.180.70.202:8080");
 		config.addAllowedHeader("*");
 		config.addAllowedMethod("*");
 		config.addExposedHeader("Authorization");

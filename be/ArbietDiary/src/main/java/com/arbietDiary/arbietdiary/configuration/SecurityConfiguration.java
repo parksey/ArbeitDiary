@@ -1,8 +1,11 @@
 package com.arbietDiary.arbietdiary.configuration;
 
 
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -12,10 +15,13 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
 
+import com.arbietDiary.arbietdiary.configuration.model.AuthConstants;
 import com.arbietDiary.arbietdiary.member.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
@@ -24,7 +30,6 @@ import lombok.RequiredArgsConstructor;
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	private final MemberService memberService;
-	private final CorsFilter corsFilter;
 	
 	@Bean
 	PasswordEncoder getPasswordEncoder() {
@@ -64,6 +69,27 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		return super.authenticationManagerBean();
 	}
 	
+	@Bean
+    public CorsConfigurationSource corsConfigurationSource() {
+        final CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(
+        		List.of(
+        		"http://54.180.70.202"
+        		,"http://localhost:3000"
+        				));
+        configuration.addAllowedHeader("*");
+        configuration.setAllowedMethods(List.of(
+        		HttpMethod.POST.name(), 
+        		HttpMethod.GET.name(), 
+        		HttpMethod.OPTIONS.name()
+        		));
+        configuration.setAllowCredentials(true);
+        configuration.addExposedHeader(AuthConstants.AUTH_HEADER);
+
+        final UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/api/**", configuration);
+        return source;
+    }
 	
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
@@ -72,6 +98,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 		// JWT 토큰용
 		http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 		
+		http.cors().configurationSource(corsConfigurationSource());
 		http.formLogin()
 				.loginPage("/index.html")
 //				.loginPage("/member/login")
@@ -82,8 +109,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.and()
 			.httpBasic().authenticationEntryPoint(new NoPopupBasicAuthenticatioinEntryPoint())
 			.and()
-			.addFilter(corsFilter)
-			.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class)
+			.addFilter(jwtAuthenticationFilter())
 			.addFilter(new JwtAuthorizationFilter(authenticationManager(), memberService));
 		
 		http.logout()
@@ -91,8 +117,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 			.logoutSuccessUrl("/")
 			.invalidateHttpSession(true); // 로그아웃시 모두 삭제
 		
-//		http.authorizeRequests()
-//			.antMatchers(HttpMethod.OPTIONS).permitAll();
+		http.authorizeRequests()
+			.antMatchers(HttpMethod.OPTIONS, "/api/**").permitAll();
 		
 		/*
 		 * 개발용
@@ -123,10 +149,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 					,"/findpassword"
 					,"/findid"
 					,"/member/reset/password")
-			.permitAll()
-			.mvcMatchers("/index.html")
 			.permitAll();
-			
+		
 		http.authorizeRequests()
 		.antMatchers("/api/userRegist"
 				,"/api/login"
@@ -136,6 +160,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 				,"/api/find/userid"
 				)
 		.permitAll();
+		
 		
 		super.configure(http);
 	}
@@ -149,17 +174,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
 	@Override
 	public void configure(WebSecurity web) throws Exception {
 		web.ignoring().mvcMatchers(
-                // "원하는 url",
-                "/index.html",   // front-end 에서 build한 static file
-                "/favicon.ico",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
-//                "/css/**",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
-//                "/fonts/**",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
-//                "/img/**",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
-//                "/js/**",   // 여기서 설정 안 해주면 index.html이 읽을 수 없음
+                "/index.html", 
+                "/favicon.ico",   
                 "/*.json",
                 "/*.png",
 				"/static/**"
-         );//.requestMatchers(PathRequest.toStaticResources().atCommonLocations());
+         );
 	    			 
 	}
 }
