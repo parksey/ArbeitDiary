@@ -24,6 +24,12 @@ public class DateServiceImpl implements DateService{
 	public boolean makeCalendarDate(Calendar calendar) {
 		List<Date> dateList = new ArrayList<Date>();
 		LocalDateTime now = LocalDateTime.now();
+
+		for(int i=SecretData.INIT_BACK_DAYS; i > 0; i--) {
+			Date date = makeDate(calendar, now.minusDays(i));
+			dateList.add(date);
+		}
+		
 		for(int i=0; i < SecretData.INIT_FORWARD_DAYS; i++) {
 			Date date = makeDate(calendar, now.plusDays(i));
 			dateList.add(date);

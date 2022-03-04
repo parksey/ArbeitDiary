@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<launchConfiguration type="org.eclipse.m2e.Maven2LaunchConfigurationType">
-    <booleanAttribute key="M2_DEBUG_OUTPUT" value="false"/>
-    <stringAttribute key="M2_GOALS" value=""/>
-    <booleanAttribute key="M2_NON_RECURSIVE" value="false"/>
-    <booleanAttribute key="M2_OFFLINE" value="false"/>
-    <stringAttribute key="M2_PROFILES" value=""/>
-    <listAttribute key="M2_PROPERTIES"/>
-    <stringAttribute key="M2_RUNTIME" value="EMBEDDED"/>
-    <booleanAttribute key="M2_SKIP_TESTS" value="false"/>
-    <intAttribute key="M2_THREADS" value="1"/>
-    <booleanAttribute key="M2_UPDATE_SNAPSHOTS" value="false"/>
-    <stringAttribute key="M2_USER_SETTINGS" value=""/>
-    <booleanAttribute key="M2_WORKSPACE_RESOLUTION" value="false"/>
+<launchConfiguration type="org.springframework.ide.eclipse.boot.launch">
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_ATTR_USE_ARGFILE" value="false"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_EXCLUDE_TEST_CODE" value="true"/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_SHOW_CODEDETAILS_IN_EXCEPTION_MESSAGES" value="true"/>
     <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_CLASSPATH_ONLY_JAR" value="false"/>
-    <stringAttribute key="org.eclipse.jdt.launching.JRE_CONTAINER" value="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk11.0.13_8/"/>
-    <stringAttribute key="org.eclipse.jdt.launching.WORKING_DIRECTORY" value=""/>
+    <booleanAttribute key="org.eclipse.jdt.launching.ATTR_USE_START_ON_FIRST_THREAD" value="true"/>
+    <stringAttribute key="org.eclipse.jdt.launching.CLASSPATH_PROVIDER" value="org.springframework.ide.eclipse.boot.launch.BootMavenClassPathProvider"/>
+    <stringAttribute key="org.eclipse.jdt.launching.MAIN_TYPE" value="com.arbietDiary.arbietdiary.ArbietDiaryApplication"/>
+    <stringAttribute key="org.eclipse.jdt.launching.PROJECT_ATTR" value="ArbietDiary"/>
+    <stringAttribute key="org.eclipse.jdt.launching.SOURCE_PATH_PROVIDER" value="org.springframework.ide.eclipse.boot.launch.BootMavenSourcePathProvider"/>
+    <stringAttribute key="spring.boot.app.properties" value=""/>
+    <booleanAttribute key="spring.boot.dash.hidden" value="false"/>
+    <booleanAttribute key="spring.boot.debug.enable" value="false"/>
+    <booleanAttribute key="spring.boot.fast.startup" value="true"/>
+    <booleanAttribute key="spring.boot.jmx.enable" value="true"/>
+    <booleanAttribute key="spring.boot.lifecycle.enable" value="true"/>
+    <stringAttribute key="spring.boot.lifecycle.termination.timeout" value="15000"/>
+    <booleanAttribute key="spring.boot.livebean.enable" value="false"/>
+    <stringAttribute key="spring.boot.livebean.port" value="0"/>
+    <stringAttribute key="spring.boot.profile" value=""/>
 </launchConfiguration>

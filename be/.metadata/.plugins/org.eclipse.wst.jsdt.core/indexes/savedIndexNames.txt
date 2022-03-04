@@ -1,15 +1,2 @@
-INDEX VERSION 1.4+C:\Users\sypark\Desktop\semi-project\ArbeitDiary\be\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
-2265867231.index
+INDEX VERSION 1.4+C:\Users\sypark\Desktop\semi-project\arbietDiary\ArbeitDiary\be\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
 3309980084.index
-2738058087.index
-4231762504.index
-2392727984.index
-3040112957.index
-1979860097.index
-927126308.index
-332234104.index
-1343487594.index
-571135861.index
-2575020898.index
-1718009670.index
-2265867231.index

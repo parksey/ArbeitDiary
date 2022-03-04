@@ -33,7 +33,7 @@ public class ApiCalendarController {
 	private final WorkService workService;
 	private final DateMemberService dateMemberService;
 
-	@PostMapping("api/load")
+	@PostMapping("/api/load")
 	public ResponseEntity<?> load(@RequestBody CalendarInput calendarInput, Principal principal){
 		System.out.println("[API LOAD]");
 		CalendarUserList calendarUserList = projectService.getUserList(calendarInput.getProjectId());
@@ -48,7 +48,7 @@ public class ApiCalendarController {
 		return ResponseEntity.ok().body(resultCalendar);
 	}
 	
-	@PostMapping("api/auto")
+	@PostMapping("/api/auto")
 	public ResponseEntity<?> self(@RequestBody WorkUserListRequest workUserList, Principal principal){
 		System.out.println("[API AUTO] : workUserList = " + workUserList);
 		List<Date> beforeUserList = dateMemberService.exceptAutoTime(workUserList.getProjectId(), workUserList.getCalendarId());
@@ -67,7 +67,7 @@ public class ApiCalendarController {
 		return ResponseEntity.ok().body(resultCalendar);
 	}
 	
-	@PostMapping("api/update")
+	@PostMapping("/api/update")
 	public ResponseEntity<?> calendar(@RequestBody WorkUserListRequest workUserList, Principal principal){
 		System.out.println("[API UPDATE] : 요청");
 		boolean result = dateMemberService.loadDailyWork(workUserList.getCalendarId(), workUserList.getDates());
