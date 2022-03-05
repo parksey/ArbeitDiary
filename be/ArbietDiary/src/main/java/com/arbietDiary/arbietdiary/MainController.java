@@ -10,8 +10,9 @@ import lombok.RequiredArgsConstructor;
 @Controller
 public class MainController {
 	@GetMapping("/dev")
-	public String index() {
+	public String devIndex() {
 		System.out.println("메인");
 		return "indexdev";
 	}
+	
 }

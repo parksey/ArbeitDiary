@@ -1,5 +1,5 @@
 import moment from "moment";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import "../css/components/Calendar.css";
 import { MdChevronRight, MdChevronLeft } from "react-icons/md";
 import { useSelector } from "react-redux";
@@ -14,6 +14,7 @@ type CalendarProps = {
 
 function Calendar({ onConfirm, onConfirmDay, constproject }: CalendarProps) {
   const calendar = useSelector((state: RootState) => state.CalenderInfo)[0];
+
   const dates = calendar.dates;
   const trueUserList = constproject.userList //참으로 표시한 userList
     .filter((user) => user.done === true)
@@ -49,7 +50,8 @@ function Calendar({ onConfirm, onConfirmDay, constproject }: CalendarProps) {
               let workflag = false;
 
               try {
-                dates.filter((date) => date.date === days.format("YYMMDD"))[0]
+                dates
+                  .filter((date) => date.date === days.format("YYMMDD"))[0]
                   .users.map((user) => {
                     for (const truename in trueUserList) {
                       if (user.name === trueUserList[truename]) {

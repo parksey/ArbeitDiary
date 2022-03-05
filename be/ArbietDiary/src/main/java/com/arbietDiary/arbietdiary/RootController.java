@@ -10,4 +10,9 @@ public class RootController implements ErrorController{
 	public String redirectRoot() {
 		return "../public/index";
 	}
+	
+	@GetMapping("/index.html")
+	public String index() {
+		return "../public/index";
+	}
 }

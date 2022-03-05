@@ -76,6 +76,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         		List.of(
         		"http://54.180.70.202"
         		,"http://localhost:3000"
+        		,"http://localhost:8080"
         				));
         configuration.addAllowedHeader("*");
         configuration.setAllowedMethods(List.of(

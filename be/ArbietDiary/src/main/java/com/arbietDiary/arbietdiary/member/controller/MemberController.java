@@ -15,18 +15,19 @@ import com.arbietDiary.arbietdiary.member.service.MemberService;
 
 import lombok.RequiredArgsConstructor;
 
+@RequestMapping("/dev")
 @RequiredArgsConstructor
 @Controller
 public class MemberController {
 	private final MemberService memberService;
 	
-	@GetMapping("/dev/member/register")
+	@GetMapping("/member/register")
 	public String register(){
 		System.out.println("[회원 가입] : 화면");
 		return "member/register";
 	}
 	
-	@PostMapping("/dev/member/register")
+	@PostMapping("/member/register")
 	public String submitRegist(Model model, MemberInput memberInput) {
 		System.out.println("[회원 가입] : 요청");
 		System.out.println("[회원 가입] : member = "+memberInput);
@@ -36,7 +37,7 @@ public class MemberController {
 		return "member/register-complete";
 	}
 	
-	@GetMapping("/dev/member/email-auth")
+	@GetMapping("/member/email-auth")
 	public String emailAuth(Model model, HttpServletRequest request) {
 		System.out.println("[이메일 인증]");
 		String uuid = request.getParameter("id");
@@ -47,19 +48,19 @@ public class MemberController {
 		return "member/email-auth";
 	}
 	
-	@GetMapping("/dev/member/info")
+	@GetMapping("/member/info")
 	public String memberInfo(Model model, Principal principal) {
 		System.out.println("[사용자 정보]");
 		return "member/info";
 	}
 	
-	@GetMapping("/dev/member/login")
+	@GetMapping("/member/login")
 	public String memberLogin(HttpServletRequest request) {
 		System.out.println("[로그인 화면] : 화면");
 		return "member/login";
 	}
 	
-	@PostMapping("/dev/member/login")
+	@PostMapping("/member/login")
 	public String memberLoginSubmit(HttpServletRequest request, MemberInput memberInput) {
 		System.out.println("[로그인 화면] : 요청");
 		System.out.println(memberInput);
@@ -67,13 +68,13 @@ public class MemberController {
 		return "member/login";
 	}
 	
-	@GetMapping("/dev/member/find/password")
+	@GetMapping("/member/find/password")
 	public String findPassword() {
 		System.out.println("[비밀번호 찾기] : 화면");
 		return "member/find-password";
 	}
 	
-	@PostMapping("/dev/member/find/password")
+	@PostMapping("/member/find/password")
 	public String findPasswordSubmit(MemberInput memberInput, Model model) {
 		System.out.println("[비밀번호 찾기] : 요청");
 		boolean result = false;
@@ -87,7 +88,7 @@ public class MemberController {
 		return "member/find-password-result";
 	}
 	
-	@GetMapping("/dev/member/reset/password")
+	@GetMapping("/member/reset/password")
 	public String resetPassword(Model model, HttpServletRequest request) {
 		System.out.println("[비밀번호 초기화] : 화면");
 		
@@ -98,7 +99,7 @@ public class MemberController {
 		return "member/reset-password";
 	}
 	
-	@PostMapping("/dev/member/reset/password")
+	@PostMapping("/member/reset/password")
 	public String resetPaswwordSubmit(Model model, MemberInput memberInput) {
 		System.out.println("[비밀번호 초기화] : 화면");
 		System.out.println("[비밀번호 초기화] : memberInput = "+memberInput);
@@ -113,13 +114,13 @@ public class MemberController {
 		return "member/reset-password-result";
 	}
 	
-	@GetMapping("/dev/member/password")
+	@GetMapping("/member/password")
 	public String memberPassword() {
 		System.out.println("[비밀번호 변경] : 화면");
 		return "member/password";
 	}
 	
-	@PostMapping("/dev/member/password")
+	@PostMapping("/member/password")
 	public String submitMemberPassword(Model model, MemberInput memberInput, Principal principal) {
 		System.out.println("[비밀번호 변경] : 요청");
 		String userId = principal.getName();
@@ -130,7 +131,7 @@ public class MemberController {
 		return "member/password";
 	}
 	
-	@GetMapping("/dev/member/find/email")
+	@GetMapping("/member/find/email")
 	public String findEmail() {
 		System.out.println("[아이디 찾기]");
 		return "member/find-email";
