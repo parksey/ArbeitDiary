@@ -4,7 +4,7 @@ import { getCalendarinfo } from "../module/Calendar";
 import { get_userinfo, Usertype } from "../module/User";
 
 // export const api = "http://localhost:8080";
-export const api = "http://54.180.70.202";
+export const api = "http://43.200.142.61";
 
 type UserApiprops = {
   userId: string;

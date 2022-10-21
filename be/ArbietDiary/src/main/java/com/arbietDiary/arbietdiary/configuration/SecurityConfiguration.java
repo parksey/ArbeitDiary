@@ -23,6 +23,7 @@ import org.springframework.web.filter.CorsFilter;
 
 import com.arbietDiary.arbietdiary.configuration.model.AuthConstants;
 import com.arbietDiary.arbietdiary.member.service.MemberService;
+import com.arbietDiary.arbietdiary.secret.SecretData;
 
 import lombok.RequiredArgsConstructor;
 
@@ -74,7 +75,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter{
         final CorsConfiguration configuration = new CorsConfiguration();
         configuration.setAllowedOrigins(
         		List.of(
-        		"http://54.180.70.202"
+        		SecretData.localUrl
         		,"http://localhost:3000"
         		,"http://localhost:8080"
         				));

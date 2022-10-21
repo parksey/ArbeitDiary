@@ -8,11 +8,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class RootController implements ErrorController{
 	@GetMapping("/error")
 	public String redirectRoot() {
-		return "../public/index";
+		return "../public/index.html";
 	}
 	
-	@GetMapping("/index.html")
-	public String index() {
-		return "../public/index";
-	}
+//	@GetMapping("/index.html")
+//	public String index() {
+//		return "../public/index";
+//	}
 }

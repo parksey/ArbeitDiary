@@ -1,0 +1,30 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+    generate-ddl: true
+    show-sql: true
+  
+  datasource:
+    url: jdbc:mariadb://database-1.cbavop1ssofi.ap-northeast-2.rds.amazonaws.com:3306/arbietdiarydb
+    #url: jdbc:mariadb://127.0.0.1:33306/arbiet
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: admin
+    password: ruddls14~!
+    #username: arbiet_psy
+    #password: ruddls14@
+
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: saeyun302@gmail.com
+    password: bbiaqppguxgbcacb
+    properties:
+      mail:
+        smtp:
+          timeout: 5000
+          starttls:
+            enable: true
+    
+    
+    
